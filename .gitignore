@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+*.pyc
+*.swp
+*.sql
+*.sqlite
+*.sqlite3
+*.log
+
+.DS_Store
+dev.py
