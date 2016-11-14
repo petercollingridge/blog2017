@@ -39,6 +39,19 @@ class HomePage(Page):
     ]
 
 
+# A relative link path (used for CSS and JS)
+class LinkFragment(models.Model):
+    path = models.CharField(max_length=255, help_text="Relative URL")
+    panels = [FieldPanel('path')]
+
+    class Meta:
+        abstract = True
+
+
+class LinkFragments(Orderable, LinkFragment):
+    page = ParentalKey('GenericPage', related_name='links')
+
+
 # A generic page which uses a Stream field with a raw HTML block so is relatively flexible
 class GenericPage(Page):
     date = models.DateField("Post date", blank=True)
@@ -52,5 +65,6 @@ class GenericPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('date'),
-        StreamFieldPanel('body')
+        InlinePanel('links', label="css_links"),
+        StreamFieldPanel('body'),
     ]
