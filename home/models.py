@@ -4,12 +4,15 @@ from django.db import models
 
 from modelcluster.fields import ParentalKey
 
+from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore.models import Page, Orderable
-from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel
+from wagtail.wagtailcore.fields import RichTextField, StreamField
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel, InlinePanel
+from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 
-class BlogSection(models.Model):
+# A section of content, such as Tutorials to show on the home page
+class HomePageSection(models.Model):
     title = models.CharField(max_length=255)
     body = RichTextField(blank=True)
 
@@ -22,7 +25,8 @@ class BlogSection(models.Model):
         abstract = True
 
 
-class HomePageSection(Orderable, BlogSection):
+# Sections for the home page collected together in an orderable way
+class HomePageSections(Orderable, HomePageSection):
     page = ParentalKey('HomePage', related_name='sections')
 
 
@@ -32,4 +36,21 @@ class HomePage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('introduction', classname="full"),
         InlinePanel('sections', label="Sections"),
+    ]
+
+
+# A generic page which uses a Stream field with a raw HTML block so is relatively flexible
+class GenericPage(Page):
+    date = models.DateField("Post date", blank=True)
+
+    body = StreamField([
+        ('heading', blocks.CharBlock(classname="full title")),
+        ('paragraph', blocks.RichTextBlock()),
+        ('html', blocks.RawHTMLBlock()),
+        ('image', ImageChooserBlock()),
+    ])
+
+    content_panels = Page.content_panels + [
+        FieldPanel('date'),
+        StreamFieldPanel('body')
     ]
