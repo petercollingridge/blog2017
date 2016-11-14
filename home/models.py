@@ -48,13 +48,17 @@ class LinkFragment(models.Model):
         abstract = True
 
 
-class LinkFragments(Orderable, LinkFragment):
-    page = ParentalKey('GenericPage', related_name='links')
+class CSSLinkFragments(Orderable, LinkFragment):
+    page = ParentalKey('GenericPage', related_name='css_links')
+
+
+class JSLinkFragments(Orderable, LinkFragment):
+    page = ParentalKey('GenericPage', related_name='js_links')
 
 
 # A generic page which uses a Stream field with a raw HTML block so is relatively flexible
 class GenericPage(Page):
-    date = models.DateField("Post date", blank=True)
+    date = models.DateField("Post date")
 
     body = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
@@ -65,6 +69,7 @@ class GenericPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('date'),
-        InlinePanel('links', label="css_links"),
+        InlinePanel('css_links', label="CSS links"),
+        InlinePanel('js_links', label="JS links"),
         StreamFieldPanel('body'),
     ]

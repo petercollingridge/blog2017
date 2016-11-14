@@ -4,10 +4,18 @@
 
 {% block body_class %}template-blogpage{% endblock %}
 
-{% if page.links.all %}
+{% if page.css_links.all %}
 	{% block extra_css %}
-		{% for link in page.links.all %}
+		{% for link in page.css_links.all %}
 			<link rel="stylesheet" type="text/css" href="/static/css/{{ link.path }}">
+		{% endfor%}
+	{% endblock %}
+{% endif %}
+
+{% if page.js_links.all %}
+	{% block extra_js %}
+		{% for link in page.js_links.all %}
+			<script type="text/javascript" src="/static/js/{{ link.path }}"></script>
 		{% endfor%}
 	{% endblock %}
 {% endif %}
