@@ -7,7 +7,15 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-	{{ page.body|richtext }}
+	{{ page.introduction|richtext }}
+
+	{% if page.sections.all %}
+		{% for section in page.sections.all %}
+			<hr>
+			<h2>{{ section.title }}</h2>
+			<p>{{ section.body|richtext }}</p>
+		{% endfor %}
+	{% endif %}
 
 	<h2>Tools</h2>
 
@@ -32,22 +40,6 @@
 
 	<hr>
 
-	<h2>Tutorials</h2>
-
-	<p>
-		Here are various tutorials I've written about techiniques I learnt.
-		They primarily deal with graphics using SVG or Canvas.
-	</p>
-
 	<p><a href="/tools">More tools &gt;</a></p>
-
-	<hr>
-
-	<h2>Articles</h2>
-
-	<p>
-		This is a collection of articles I've written that cover various topics, including data visualisation and linguistics.
-	</p>
-
 	<p><a href="/articles">Articles</a></p>
 {% endblock %}
