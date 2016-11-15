@@ -73,3 +73,19 @@ class GenericPage(Page):
         InlinePanel('js_links', label="JS links"),
         StreamFieldPanel('body'),
     ]
+
+
+# A page containing a list of child pages.
+class IndexPage(Page):
+    introduction = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('introduction', classname="full"),
+    ]
+
+    def get_context(self, request):
+        context = super(IndexPage, self).get_context(request)
+        # Add extra variables and return the updated context
+        #context['children'] = IndexPage.objects.live().descendant_of(self)
+        context['children'] = GenericPage.objects.child_of(self).live()
+        return context
