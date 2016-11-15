@@ -1,0 +1,64 @@
+.button {
+    font-family: MuseoSans500, sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    background: #ddd;
+    display: inline-block;
+    padding: 2px 5px 2px 5px;
+    margin: 8px 0 8px 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.button:hover {
+    text-decoration: underline;
+}
+
+input {
+    background: #ddd;
+    margin: 4px 0;
+    outline: none;
+    border: solid 1px #ddd;
+    padding: 1px 4px 1px 4px;
+}
+
+input:focus {
+    background: #bbb;
+    border: solid 1px #fff;
+}
+
+.small-input {
+    width: 36px;
+}
+
+.dna-input {
+    width: 400px;
+    font-family: monospace;
+}
+
+.sequence {
+    background: #ccd;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding: 3px 8px 4px 8px;
+    margin-top: 8px;
+}
+
+.sequence-header {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.sequence-parameter {
+    line-height: 20px;
+}
+
+svg {
+    border: 1px solid #444;
+    margin: 5px;
+}
