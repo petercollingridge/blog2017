@@ -1,5 +1,5 @@
 body {
-	padding-top: 160px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
 }
 
 h1 {
@@ -9,8 +9,22 @@ h1 {
 	font-size: 4em;
 }
 
-.navbar-fixed-top {
-  border: 0;
+.navbar {
+	border-radius: 0;
+}
+
+.small-nav-header {
+	color: white;
+	font-size: 1.6em;
+	border: none;
+	float: left;
+}
+
+button.navbar-toggle {
+	position: absolute;
+	right: 0;
+	bottom: 2px;
+	float: none;
 }
 
 .block-heading {
