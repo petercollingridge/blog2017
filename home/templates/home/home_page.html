@@ -1,8 +1,13 @@
 {% extends "base.html" %}
+{% load static wagtailuserbar %}
 
 {% load wagtailcore_tags %}
 
 {% block heading %}{{ page.title }}{% endblock %}
+
+{% block extra_css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}">
+{% endblock %}
 
 {% block body_class %}template-homepage{% endblock %}
 
@@ -14,15 +19,13 @@
 			<hr>
 			<h2>{{ section.title }}</h2>
 			<p>{{ section.body|richtext }}</p>
+			{% if section.link_page %}
+				<p><a href="{{ section.link_page.slug }}">More {{ section.title }} <i class="fa fa-caret-right" aria-hidden="true"></i></a></p>
+			{% endif %}
 		{% endfor %}
 	{% endif %}
 
-	<h2>Tools</h2>
-
-	<p>
-		I've made a number of tools to help me work with SVG files.
-		They are online here and in many cases are open source.
-	</p>
+	<hr>
 
 	<div class="row">
 		<div class="col-sm-4">
@@ -36,10 +39,4 @@
 		</div>
 	</div>
 
-	<p><a href="/tools">More tools &gt;</a></p>
-
-	<hr>
-
-	<p><a href="/tools">More tools &gt;</a></p>
-	<p><a href="/articles">Articles</a></p>
 {% endblock %}

@@ -7,17 +7,24 @@ from modelcluster.fields import ParentalKey
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField, StreamField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel, InlinePanel
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel, InlinePanel, PageChooserPanel
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 
 # A section of content, such as Tutorials to show on the home page
 class HomePageSection(models.Model):
     title = models.CharField(max_length=255)
+    link_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        related_name='+'
+    )
     body = RichTextField(blank=True)
 
     panels = [
         FieldPanel('title'),
+        PageChooserPanel('link_page'),
         FieldPanel('body'),
     ]
 
