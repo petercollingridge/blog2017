@@ -9,6 +9,10 @@
 {% block content %}
 	{{ page.introduction|richtext }}
 
+	{% for c in page.featured_content.all %}
+		<p>{{ c.title }}</p>
+	{% endfor %}
+
 	{% if children %}
 		{% for child in children %}
 			<p><a href="{{ child.slug }}">{{ child.title }}<a/></p>

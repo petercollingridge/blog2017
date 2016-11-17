@@ -14,16 +14,18 @@
 {% block content %}
 	{{ page.introduction|richtext }}
 
-	{% if page.sections.all %}
-		{% for section in page.sections.all %}
-			<hr>
-			<h2>{{ section.title }}</h2>
-			<p>{{ section.body|richtext }}</p>
-			{% if section.link_page %}
-				<p><a href="{{ section.link_page.slug }}">More {{ section.title }} <i class="fa fa-caret-right" aria-hidden="true"></i></a></p>
-			{% endif %}
+	{% for section in page.get_sections %}
+		<hr>
+		<h2>{{ section.title }}</h2>
+		<p>{{ section.introduction|richtext }}</p>
+
+		{% for content in section.get_featured_content %}
+			<p>{{ content.date }}</p>
+			<div><a href="{{ section.slug }}/{{ content.link_page.slug }}">{{ content.description }}</a></div>
 		{% endfor %}
-	{% endif %}
+
+		<p><a href="{{ section.slug }}">More {{ section.title }} <i class="fa fa-caret-right" aria-hidden="true"></i></a></p>
+	{% endfor %}
 
 	<hr>
 

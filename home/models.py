@@ -45,6 +45,17 @@ class HomePage(Page):
         InlinePanel('sections', label="Sections"),
     ]
 
+    # Return sections to show on front page
+    def get_sections(self):
+        return IndexPage.objects.filter(path__startswith=self.path).order_by('path')
+
+    # Get a list of child pages which will be the main sections of the site
+    def get_context(self, request):
+        context = super(HomePage, self).get_context(request)
+        # Add extra variables and return the updated context
+        context['children'] = IndexPage.objects.child_of(self).live()
+        return context
+
 
 # A relative link path (used for CSS and JS)
 class LinkFragment(models.Model):
@@ -88,6 +99,7 @@ class IndexPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('introduction', classname="full"),
+        InlinePanel('featured_content', label="Featured content"),
     ]
 
     def get_context(self, request):
@@ -96,3 +108,28 @@ class IndexPage(Page):
         #context['children'] = IndexPage.objects.live().descendant_of(self)
         context['children'] = GenericPage.objects.child_of(self).live()
         return context
+
+    def get_featured_content(self):
+        children = GenericPage.objects.child_of(self).live()
+        return [children.get(pk=content.link_page) for content in self.featured_content.all()]
+
+
+# Link to a featured page within an index
+class FeaturedContent(models.Model):
+    description = models.CharField(max_length=255)
+    link_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        related_name='+'
+    )
+
+    panels = [
+        FieldPanel('description'),
+        PageChooserPanel('link_page'),
+    ]
+
+
+# A group of featured content to display on the home page
+class FeaturedContentSet(Orderable, FeaturedContent):
+    page = ParentalKey('IndexPage', related_name='featured_content')
