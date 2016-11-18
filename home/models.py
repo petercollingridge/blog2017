@@ -9,6 +9,7 @@ from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel, InlinePanel, PageChooserPanel
 from wagtail.wagtailimages.blocks import ImageChooserBlock
+from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 
 
 # A section of content, such as Tutorials to show on the home page
@@ -78,6 +79,14 @@ class JSLinkFragments(Orderable, LinkFragment):
 class GenericPage(Page):
     date = models.DateField("Post date")
 
+    main_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
     body = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
@@ -89,6 +98,7 @@ class GenericPage(Page):
         FieldPanel('date'),
         InlinePanel('css_links', label="CSS links"),
         InlinePanel('js_links', label="JS links"),
+        ImageChooserPanel('main_image'),
         StreamFieldPanel('body'),
     ]
 
@@ -126,10 +136,15 @@ class FeaturedContent(models.Model):
 
     panels = [
         FieldPanel('description'),
-        PageChooserPanel('link_page'),
+        PageChooserPanel('link_page', page_type=GenericPage),
     ]
 
 
 # A group of featured content to display on the home page
 class FeaturedContentSet(Orderable, FeaturedContent):
     page = ParentalKey('IndexPage', related_name='featured_content')
+
+
+# Page for prototyping the homepage
+class HomePageTest(Page):
+    pass

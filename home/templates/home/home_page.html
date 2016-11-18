@@ -2,6 +2,7 @@
 {% load static wagtailuserbar %}
 
 {% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block heading %}{{ page.title }}{% endblock %}
 
@@ -20,8 +21,10 @@
 		<p>{{ section.introduction|richtext }}</p>
 
 		{% for content in section.get_featured_content %}
-			<p>{{ content.date }}</p>
-			<div><a href="{{ section.slug }}/{{ content.link_page.slug }}">{{ content.description }}</a></div>
+			{% if content.main_image %}
+        		{% image content.main_image fill-300x200 %}
+    		{% endif %}
+			<div><a href="{{ section.slug }}/{{ content.link_page.slug }}">{{ content.title }}</a></div>
 		{% endfor %}
 
 		<p><a href="{{ section.slug }}">More {{ section.title }} <i class="fa fa-caret-right" aria-hidden="true"></i></a></p>

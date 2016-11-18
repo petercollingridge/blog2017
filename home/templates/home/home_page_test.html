@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static wagtailuserbar %}
+
+{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block heading %}{{ page.title }}{% endblock %}
+
+{% block extra_css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}">
+{% endblock %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+	<p>Introduction here.</p>
+
+	<hr>
+	<h2>Tools</h2>
+	<p>Various programs I've put online for you to use.</p>
+
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="home-toolbox">SVG Optimiser</div>
+		</div>
+			<div class="col-sm-4">
+			<div class="home-toolbox">SVG Editor</div>
+		</div>
+		<div class="col-sm-4">
+			<a href="/tools/draw-dna">
+				<div class="home-toolbox">
+					<img width="100%" style="overflow:hidden" src="/media/original_images/Screen_Shot_2016-11-17_at_22.14.16.png">
+					<div>Draw SVG</div>
+				</div>
+			</a>
+		</div>
+	</div>
+
+	<p><a href="tools">More Tools <i class="fa fa-caret-right" aria-hidden="true"></i></a>
+
+	<hr>
+	<h2>Tutorials</h2>
+	<p>Various tutorials explaining techniques I've learnt</p>
+
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="home-toolbox">SVG</div>
+		</div>
+			<div class="col-sm-4">
+			<div class="home-toolbox">Canvas</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="home-toolbox">3D graphics</div>
+		</div>
+	</div>
+
+	<p><a href="tools">More Tutorials <i class="fa fa-caret-right" aria-hidden="true"></i></a>
+
+	<hr>
+	<h2>Projects</h2>
+	<p>Various projects I've worked on a written about</p>
+
+	<div class="row">
+		<div class="col-sm-3">
+			<div class="home-toolbox">ALife</div>
+		</div>
+			<div class="col-sm-3">
+			<div class="home-toolbox">Pixar in a Box</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="home-toolbox">Evolving Images</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="home-toolbox">Data analysis</div>
+		</div>
+	</div>
+
+	<p><a href="tools">More Projects <i class="fa fa-caret-right" aria-hidden="true"></i></a>
+
+{% endblock %}
