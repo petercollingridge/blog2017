@@ -1,9 +1,42 @@
 .home-toolbox {
-	height: 120px;
-	background-color: #ddd;
-	line-height: 120px;
-	font-size: 20px;
-	text-align: center;
+	height: 150px;
 	margin: 10px 0;
 	overflow: hidden;
+	position: relative;
+}
+
+.home-toolbox img {
+	position: absolute;
+	margin: 0;
+	top: 70%;
+    left: 50%;
+   	transform: translate(-50%, -50%);
+}
+
+.home-toolbox .title {
+	position: absolute;
+	bottom: 55%;
+	left: 0; 
+	width: 100%;
+	background-color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0.8); 
+	font-size: 20px;
+	font-weight: bold;
+	color: black;
+	text-align: center;
+}
+
+.home-toolbox a:hover .title {
+	text-decoration: underline;
+}
+
+.home-toolbox .description {
+	position: absolute;
+	top: 50%;
+	left: 0; 
+	width: 100%;
+	text-align: center;
+	color: black;
+	background-color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0.8); 
 }
