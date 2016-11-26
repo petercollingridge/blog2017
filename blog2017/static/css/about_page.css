@@ -1,4 +1,17 @@
 .social-icon {
-	width: 60px;
+	width: 80px;
 	display: inline-block;
+	text-align: center;
+	line-height: 16px;
+	vertical-align: top;
+	margin: 8px;
+	font-weight: bold;
+}
+
+.social-icon:hover {
+	color: #004080;
+}
+
+.social-icon i {
+	margin-bottom: 5px;
 }

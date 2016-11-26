@@ -11,4 +11,8 @@ h1 {
 
 .block-heading {
 	font-size: 2em;
+	border-bottom: 1px solid #888;
+	padding-top: 8px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
