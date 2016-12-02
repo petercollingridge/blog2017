@@ -12,6 +12,9 @@
 	color: #004080;
 }
 
+.social-icon:hover svg path{
+	color: #004080;
+}
 .social-icon i {
 	margin-bottom: 5px;
 }
