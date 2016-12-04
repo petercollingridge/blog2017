@@ -1,6 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 
 from modelcluster.fields import ParentalKey
 
@@ -10,6 +11,7 @@ from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel, InlinePanel, PageChooserPanel
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+from wagtail.wagtailsnippets.models import register_snippet
 
 
 # A section of content, such as Tutorials to show on the home page
@@ -56,6 +58,23 @@ class HomePage(Page):
         # Add extra variables and return the updated context
         context['children'] = IndexPage.objects.child_of(self).live()
         return context
+
+
+@register_snippet
+@python_2_unicode_compatible  # provide equivalent __unicode__ and __str__ methods on Python 2
+class Icon(models.Model):
+    text = models.CharField(max_length=255)
+    font_awesome_class = models.CharField(max_length=255)
+    url = models.URLField(null=True, blank=True)
+
+    panels = [
+        FieldPanel('text'),
+        FieldPanel('font_awesome_class'),
+        FieldPanel('url'),
+    ]
+
+    def __str__(self):
+        return self.text
 
 
 # A relative link path (used for CSS and JS)
