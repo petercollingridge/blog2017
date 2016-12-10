@@ -16,11 +16,12 @@
 	{{ page.introduction|richtext }}
 
 	<h2>Online Presence</h2>
+	<p>You can find me online in all these other places:</p>
 	{% for icon in page.icons.all %}
-		<div class="social-icon">
-	        <i class="fa {{ icon.font_awesome_class }} fa-5x"></i>
+		<a href="{{ icon.url }}" class="social-icon">
+	        {{ icon.image|safe }}
 	        <div>{{ icon.name }}</div>
-		</div>
+		</a>
 	{% endfor%}
 
 {% endblock %}

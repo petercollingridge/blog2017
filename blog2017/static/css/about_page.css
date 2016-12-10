@@ -6,15 +6,18 @@
 	vertical-align: top;
 	margin: 8px;
 	font-weight: bold;
+	color: #333;
 }
 
 .social-icon:hover {
 	color: #004080;
+	text-decoration: none;
 }
 
 .social-icon:hover svg path{
-	color: #004080;
+	fill: #004080;
 }
+
 .social-icon i {
 	margin-bottom: 5px;
 }

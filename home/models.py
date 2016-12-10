@@ -1,18 +1,15 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
 
 from modelcluster.fields import ParentalKey
 
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField, StreamField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel, InlinePanel, PageChooserPanel
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, FieldRowPanel, StreamFieldPanel, InlinePanel, PageChooserPanel
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsnippets.models import register_snippet
-from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 
 
 # A section of content, such as Tutorials to show on the home page
@@ -61,32 +58,26 @@ class HomePage(Page):
         return context
 
 
-@register_snippet
-@python_2_unicode_compatible  # provide equivalent __unicode__ and __str__ methods on Python 2
-class Icon(models.Model):
-    text = models.CharField(max_length=255)
-    font_awesome_class = models.CharField(max_length=255)
-    url = models.URLField(null=True, blank=True)
-
-    panels = [
-        FieldPanel('text'),
-        FieldPanel('font_awesome_class'),
-        FieldPanel('url'),
-    ]
-
-    def __str__(self):
-        return self.text
-
-
 # Non-snippet version of Icon
 class IconLink(models.Model):
     name = models.CharField(max_length=255)
-    font_awesome_class = models.CharField(max_length=255)
+    font_awesome_class = models.CharField(max_length=255, blank=True)
+    svg = models.CharField(max_length=2048, blank=True)
     url = models.URLField(null=True, blank=True)
+
+    @property
+    def image(self):
+        if self.font_awesome_class:
+            return ('<i class="fa %s fa-5x"></i>' % self.font_awesome_class)
+        else:
+            return '<i>%s</i>' % self.svg
 
     panels = [
         FieldPanel('name'),
-        FieldPanel('font_awesome_class'),
+        FieldRowPanel([
+            FieldPanel('font_awesome_class'),
+            FieldPanel('svg'),
+        ]),
         FieldPanel('url'),
     ]
 
