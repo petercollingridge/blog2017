@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static wagtailuserbar %}
+
+{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block heading %}{{ page.title }}{% endblock %}
+
+{% block extra_css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/about_page.css' %}">
+{% endblock %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+	{{ page.introduction|richtext }}
+
+	<h2>Online Presence</h2>
+	{% for icon in page.icons.all %}
+		<div class="social-icon">
+	        <i class="fa {{ icon.font_awesome_class }} fa-5x"></i>
+	        <div>{{ icon.name }}</div>
+		</div>
+	{% endfor%}
+
+{% endblock %}

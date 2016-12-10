@@ -12,6 +12,7 @@ from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel, Inl
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsnippets.models import register_snippet
+from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 
 
 # A section of content, such as Tutorials to show on the home page
@@ -75,6 +76,36 @@ class Icon(models.Model):
 
     def __str__(self):
         return self.text
+
+
+# Non-snippet version of Icon
+class IconLink(models.Model):
+    name = models.CharField(max_length=255)
+    font_awesome_class = models.CharField(max_length=255)
+    url = models.URLField(null=True, blank=True)
+
+    panels = [
+        FieldPanel('name'),
+        FieldPanel('font_awesome_class'),
+        FieldPanel('url'),
+    ]
+
+    class Meta:
+        abstract = True
+
+
+# Sections for the home page collected together in an orderable way
+class IconLinks(Orderable, IconLink):
+    page = ParentalKey('AboutPage', related_name='icons')
+
+
+class AboutPage(Page):
+    introduction = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('introduction', classname="full"),
+        InlinePanel('icons', label="social icons"),
+    ]
 
 
 # A relative link path (used for CSS and JS)
