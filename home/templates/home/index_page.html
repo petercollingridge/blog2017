@@ -13,6 +13,8 @@
 		<p>{{ c.title }}</p>
 	{% endfor %}
 
+	<hr>
+
 	{% if children %}
 		{% for child in children %}
 			<p><a href="{{ child.slug }}">{{ child.title }}<a/></p>

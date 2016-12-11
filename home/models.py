@@ -68,7 +68,7 @@ class IconLink(models.Model):
     @property
     def image(self):
         if self.font_awesome_class:
-            return ('<i class="fa %s fa-5x"></i>' % self.font_awesome_class)
+            return ('<i class="fa %s fa-4x"></i>' % self.font_awesome_class)
         else:
             return '<i>%s</i>' % self.svg
 

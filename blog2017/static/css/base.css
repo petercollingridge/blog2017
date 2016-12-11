@@ -1,12 +1,33 @@
 body {
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: "Josefin Sans", "Proxima Nova", Helvetica, Corbel, sans-serif;
 }
 
 h1 {
-	color: white;
+	color: black;
 	text-align: center;
 	font-weight: 700;
-	font-size: 4em;
+	font-size: 5em;
+	margin-top: 0;
+	margin-bottom: 15px;
+	font-family: "Alegreya Sans SC","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+p,li {
+	font-size: 1.4em;
+}
+
+.navbar-static-top {
+	margin-bottom: 15px;
+}
+
+.navbar-brand {
+	line-height: 28px;
+	padding: 10px;
+}
+
+.navbar-nav>li>a {
+	padding: 10px 15px;
+	line-height: 28px;
 }
 
 .block-heading {
