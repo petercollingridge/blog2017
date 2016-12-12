@@ -116,6 +116,26 @@ class JSLinkFragments(Orderable, LinkFragment):
     page = ParentalKey('GenericPage', related_name='js_links')
 
 
+# https://jossingram.wordpress.com/2015/07/30/some-wagtail-v1-streamfield-examples/
+class TwoColumnBlock(blocks.StructBlock):
+    left_column = blocks.StreamBlock([
+        ('paragraph', blocks.RichTextBlock()),
+        ('html', blocks.RawHTMLBlock()),
+        ('image', ImageChooserBlock()),
+    ], icon='arrow-left', label='Left column content')
+
+    right_column = blocks.StreamBlock([
+        ('paragraph', blocks.RichTextBlock()),
+        ('html', blocks.RawHTMLBlock()),
+        ('image', ImageChooserBlock()),
+    ], icon='arrow-right', label='Right column content')
+
+    class Meta:
+        icon = 'placeholder'
+        label = 'Two Columns'
+        template = 'home/blocks/two_column_block.html'
+
+
 # A generic page which uses a Stream field with a raw HTML block so is relatively flexible
 class GenericPage(Page):
     date = models.DateField("Post date")
@@ -133,6 +153,7 @@ class GenericPage(Page):
         ('paragraph', blocks.RichTextBlock()),
         ('html', blocks.RawHTMLBlock()),
         ('image', ImageChooserBlock()),
+        ('two_columns', TwoColumnBlock()),
     ])
 
     content_panels = Page.content_panels + [

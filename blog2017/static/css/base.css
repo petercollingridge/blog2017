@@ -1,19 +1,27 @@
 body {
 	font-family: "Josefin Sans", "Proxima Nova", Helvetica, Corbel, sans-serif;
+	font-size: 18px;
 }
 
 h1 {
-	color: black;
 	text-align: center;
+	font-family: "Alegreya Sans SC","Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-weight: 700;
-	font-size: 5em;
+	font-size: 3.5em;
 	margin-top: 0;
 	margin-bottom: 15px;
-	font-family: "Alegreya Sans SC","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
-p,li {
-	font-size: 1.4em;
+h2 {
+	font-size: 2em;
+	border-bottom: 1px solid #888;
+	padding-top: 8px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+p {
+	padding-bottom: 10px;
 }
 
 .navbar-static-top {
@@ -28,12 +36,4 @@ p,li {
 .navbar-nav>li>a {
 	padding: 10px 15px;
 	line-height: 28px;
-}
-
-.block-heading {
-	font-size: 2em;
-	border-bottom: 1px solid #888;
-	padding-top: 8px;
-	margin-top: 10px;
-	margin-bottom: 10px;
 }

@@ -1,0 +1,208 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 640 400">
+
+    <g id="gridlines">
+        <line x2="635" y1="316.0" x1="30" y2="316.0"/>
+        <line x2="635" y1="257.0" x1="30" y2="257.0"/>
+        <line x2="635" y1="198.0" x1="30" y2="198.0"/>
+        <line x2="635" y1="139.0" x1="30" y2="139.0"/>
+        <line x2="635" y1="80.0" x1="30" y2="80.0"/>
+        <line x2="635" y1="21.0" x1="30" y2="21.0"/>
+    </g>
+    <g id="labels">
+        <text y="373" x="23">10</text>
+        <text y="368" x="30" class="superscript">2</text>
+        <text y="314.0" x="23">10</text>
+        <text y="309.0" x="30" class="superscript">3</text>
+        <text y="255.0" x="23">10</text>
+        <text y="250.0" x="30" class="superscript">4</text>
+        <text y="196.0" x="23">10</text>
+        <text y="191.0" x="30" class="superscript">5</text>
+        <text y="137.0" x="23">10</text>
+        <text y="132.0" x="30" class="superscript">6</text>
+        <text y="78.0" x="23">10</text>
+        <text y="73.0" x="30" class="superscript">7</text>
+        <text y="19.0" x="23">10</text>
+        <text y="14.0" x="30" class="superscript">8</text>
+    </g>
+    <g id="bars">
+        <rect y="76.0" x="35" height="299.0" width="5.0"/>
+        <rect y="81.0" x="40.0" height="294.0" width="5.0"/>
+        <rect y="115.0" x="45.0" height="260.0" width="5.0"/>
+        <rect y="120.0" x="50.0" height="255.0" width="5.0"/>
+        <rect y="121.0" x="58.0" height="254.0" width="5.0"/>
+        <rect y="122.0" x="63.0" height="253.0" width="5.0"/>
+        <rect y="126.0" x="68.0" height="249.0" width="5.0"/>
+        <rect y="143.0" x="73.0" height="232.0" width="5.0"/>
+        <rect y="141.0" x="81.0" height="234.0" width="5.0"/>
+        <rect y="150.0" x="86.0" height="225.0" width="5.0"/>
+        <rect y="171.0" x="91.0" height="204.0" width="5.0"/>
+        <rect y="176.0" x="96.0" height="199.0" width="5.0"/>
+        <rect y="130.0" x="104.0" height="245.0" width="5.0"/>
+        <rect y="147.0" x="109.0" height="228.0" width="5.0"/>
+        <rect y="162.0" x="114.0" height="213.0" width="5.0"/>
+        <rect y="166.0" x="119.0" height="209.0" width="5.0"/>
+        <rect y="158.0" x="127.0" height="217.0" width="5.0"/>
+        <rect y="173.0" x="132.0" height="202.0" width="5.0"/>
+        <rect y="177.0" x="137.0" height="198.0" width="5.0"/>
+        <rect y="183.0" x="142.0" height="192.0" width="5.0"/>
+        <rect y="106.0" x="150.0" height="269.0" width="5.0"/>
+        <rect y="124.0" x="155.0" height="251.0" width="5.0"/>
+        <rect y="156.0" x="160.0" height="219.0" width="5.0"/>
+        <rect y="179.0" x="165.0" height="196.0" width="5.0"/>
+        <rect y="155.0" x="173.0" height="220.0" width="5.0"/>
+        <rect y="157.0" x="178.0" height="218.0" width="5.0"/>
+        <rect y="162.0" x="183.0" height="213.0" width="5.0"/>
+        <rect y="163.0" x="188.0" height="212.0" width="5.0"/>
+        <rect y="110.0" x="196.0" height="265.0" width="5.0"/>
+        <rect y="122.0" x="201.0" height="253.0" width="5.0"/>
+        <rect y="122.0" x="206.0" height="253.0" width="5.0"/>
+        <rect y="129.0" x="211.0" height="246.0" width="5.0"/>
+        <rect y="86.0" x="219.0" height="289.0" width="5.0"/>
+        <rect y="101.0" x="224.0" height="274.0" width="5.0"/>
+        <rect y="102.0" x="229.0" height="273.0" width="5.0"/>
+        <rect y="104.0" x="234.0" height="271.0" width="5.0"/>
+        <rect y="146.0" x="242.0" height="229.0" width="5.0"/>
+        <rect y="194.0" x="247.0" height="181.0" width="5.0"/>
+        <rect y="217.0" x="252.0" height="158.0" width="5.0"/>
+        <rect y="218.0" x="257.0" height="157.0" width="5.0"/>
+        <rect y="149.0" x="265.0" height="226.0" width="5.0"/>
+        <rect y="184.0" x="270.0" height="191.0" width="5.0"/>
+        <rect y="189.0" x="275.0" height="186.0" width="5.0"/>
+        <rect y="192.0" x="280.0" height="183.0" width="5.0"/>
+        <rect y="143.0" x="288.0" height="232.0" width="5.0"/>
+        <rect y="167.0" x="293.0" height="208.0" width="5.0"/>
+        <rect y="169.0" x="298.0" height="206.0" width="5.0"/>
+        <rect y="170.0" x="303.0" height="205.0" width="5.0"/>
+        <rect y="139.0" x="311.0" height="236.0" width="5.0"/>
+        <rect y="139.0" x="316.0" height="236.0" width="5.0"/>
+        <rect y="145.0" x="321.0" height="230.0" width="5.0"/>
+        <rect y="158.0" x="326.0" height="217.0" width="5.0"/>
+        <rect y="149.0" x="334.0" height="226.0" width="5.0"/>
+        <rect y="149.0" x="339.0" height="226.0" width="5.0"/>
+        <rect y="149.0" x="344.0" height="226.0" width="5.0"/>
+        <rect y="172.0" x="349.0" height="203.0" width="5.0"/>
+        <rect y="77.0" x="357.0" height="298.0" width="5.0"/>
+        <rect y="111.0" x="362.0" height="264.0" width="5.0"/>
+        <rect y="129.0" x="367.0" height="246.0" width="5.0"/>
+        <rect y="134.0" x="372.0" height="241.0" width="5.0"/>
+        <rect y="147.0" x="380.0" height="228.0" width="5.0"/>
+        <rect y="179.0" x="385.0" height="196.0" width="5.0"/>
+        <rect y="179.0" x="390.0" height="196.0" width="5.0"/>
+        <rect y="179.0" x="395.0" height="196.0" width="5.0"/>
+        <rect y="190.0" x="403.0" height="185.0" width="5.0"/>
+        <rect y="204.0" x="408.0" height="171.0" width="5.0"/>
+        <rect y="206.0" x="413.0" height="169.0" width="5.0"/>
+        <rect y="211.0" x="418.0" height="164.0" width="5.0"/>
+        <rect y="159.0" x="426.0" height="216.0" width="5.0"/>
+        <rect y="171.0" x="431.0" height="204.0" width="5.0"/>
+        <rect y="185.0" x="436.0" height="190.0" width="5.0"/>
+        <rect y="191.0" x="441.0" height="184.0" width="5.0"/>
+        <rect y="127.0" x="449.0" height="248.0" width="5.0"/>
+        <rect y="138.0" x="454.0" height="237.0" width="5.0"/>
+        <rect y="138.0" x="459.0" height="237.0" width="5.0"/>
+        <rect y="147.0" x="464.0" height="228.0" width="5.0"/>
+        <rect y="58.0" x="472.0" height="317.0" width="5.0"/>
+        <rect y="77.0" x="477.0" height="298.0" width="5.0"/>
+        <rect y="95.0" x="482.0" height="280.0" width="5.0"/>
+        <rect y="121.0" x="487.0" height="254.0" width="5.0"/>
+        <rect y="140.0" x="495.0" height="235.0" width="5.0"/>
+        <rect y="161.0" x="500.0" height="214.0" width="5.0"/>
+        <rect y="176.0" x="505.0" height="199.0" width="5.0"/>
+        <rect y="179.0" x="510.0" height="196.0" width="5.0"/>
+        <rect y="159.0" x="518.0" height="216.0" width="5.0"/>
+        <rect y="202.0" x="523.0" height="173.0" width="5.0"/>
+        <rect y="204.0" x="528.0" height="171.0" width="5.0"/>
+        <rect y="215.0" x="533.0" height="160.0" width="5.0"/>
+        <rect y="109.0" x="541.0" height="266.0" width="5.0"/>
+        <rect y="112.0" x="546.0" height="263.0" width="5.0"/>
+        <rect y="122.0" x="551.0" height="253.0" width="5.0"/>
+        <rect y="133.0" x="556.0" height="242.0" width="5.0"/>
+        <rect y="284.0" x="564.0" height="91.0" width="5.0"/>
+        <rect y="307.0" x="569.0" height="68.0" width="5.0"/>
+        <rect y="344.0" x="574.0" height="31.0" width="5.0"/>
+        <rect y="345.0" x="579.0" height="30.0" width="5.0"/>
+        <rect y="108.0" x="587.0" height="267.0" width="5.0"/>
+        <rect y="148.0" x="592.0" height="227.0" width="5.0"/>
+        <rect y="157.0" x="597.0" height="218.0" width="5.0"/>
+        <rect y="167.0" x="602.0" height="208.0" width="5.0"/>
+        <rect y="245.0" x="610.0" height="130.0" width="5.0"/>
+        <rect y="255.0" x="615.0" height="120.0" width="5.0"/>
+        <rect y="272.0" x="620.0" height="103.0" width="5.0"/>
+        <rect y="287.0" x="625.0" height="88.0" width="5.0"/>
+    </g>
+    <g id="letters">
+        <text y="395" x="45.0">a</text>
+        <text y="395" x="68.0">b</text>
+        <text y="395" x="91.0">c</text>
+        <text y="395" x="114.0">d</text>
+        <text y="395" x="137.0">e</text>
+        <text y="395" x="160.0">f</text>
+        <text y="395" x="183.0">g</text>
+        <text y="395" x="206.0">h</text>
+        <text y="395" x="229.0">i</text>
+        <text y="395" x="252.0">j</text>
+        <text y="395" x="275.0">k</text>
+        <text y="395" x="298.0">l</text>
+        <text y="395" x="321.0">m</text>
+        <text y="395" x="344.0">n</text>
+        <text y="395" x="367.0">o</text>
+        <text y="395" x="390.0">p</text>
+        <text y="395" x="413.0">q</text>
+        <text y="395" x="436.0">r</text>
+        <text y="395" x="459.0">s</text>
+        <text y="395" x="482.0">t</text>
+        <text y="395" x="505.0">u</text>
+        <text y="395" x="528.0">v</text>
+        <text y="395" x="551.0">w</text>
+        <text y="395" x="574.0">x</text>
+        <text y="395" x="597.0">y</text>
+        <text y="395" x="620.0">z</text>
+    </g>
+    <line x2="635" y1="375" x1="30" y2="375" id="axis"/>
+    <style>
+    #bars rect {
+        fill: #383d40;
+        opacity: 0.6;
+    }
+    #bars rect:hover {
+        fill: #ec008c;
+        opacity: 1;
+    }
+    #bars line {
+        stroke-width: 1px;
+        stroke: black;
+        opacity: 0.6;
+        pointer-events: none;
+    }
+    text {
+        font-family: Verdana, helvetica, sans-serif;
+        pointer-events: none;
+    }
+    #letters {
+        font-size: 18px;
+        text-anchor: middle;
+        fill: #222;
+    }
+    #labels {
+        text-anchor: end;
+        fill: #222;
+        font-size: 14px;
+        dominant-baseline: middle;
+    }
+    #labels .superscript {
+        font-size: 10px;
+    }
+
+    #words {
+        fill: white;
+    }
+    #gridlines {
+        stroke-width: 1;
+        stroke: #ddd;
+    }
+    #axis {
+        stroke-width: 2;
+        stroke: #222;
+    }
+    </style>
+</svg>
