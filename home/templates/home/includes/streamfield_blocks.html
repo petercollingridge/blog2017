@@ -7,7 +7,7 @@
         {% elif block.block_type == 'image' %}
             {% image block.value width-900 class="img-responsive" %}
         {% elif block.block_type == 'code' %}
-            <pre><code>{{ block.code }}</code></pre>
+            {% include_block block %}
         {% else %}
             <section class="block-{{ block.block_type }}">
                {{ block }}
