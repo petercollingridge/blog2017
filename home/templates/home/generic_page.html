@@ -23,6 +23,31 @@
 {% endif %}
 
 {% block content %}
+    <div class="article-navigation">
+        {% if previous_page %}
+            <span class="previous-page-link">
+                <a href="{{ previous_page.url }}">
+                    <i class="fa fa-caret-left" aria-hidden="true"></i>
+                    {{ previous_page }}
+                </a>
+            </span>
+        {% endif %}
+
+        <span class="parent-page-link">
+            <a href="{{ page.get_parent.url }}">{{ page.get_parent }}</a>
+        </span>
+
+        {% if next_page %}
+            <span class="next-page-link">
+                <a href="{{ next_page.url }}">
+                    {{ next_page }}
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                </a>
+            </span>
+        {% endif %}
+    </div>
+
+    <hr>
     <p class="meta">{{ page.date }}</p>
 
     <article>
@@ -43,6 +68,28 @@
         {% endfor %}
     </article>
 
-    <a href="{{ page.get_parent.url }}">{{ page.get_parent }}</a>
+    <div class="article-navigation">
+        {% if previous_page %}
+            <span class="previous-page-link">
+                <a href="{{ previous_page.url }}">
+                    <i class="fa fa-caret-left" aria-hidden="true"></i>
+                    {{ previous_page }}
+                </a>
+            </span>
+        {% endif %}
+
+        <span class="parent-page-link">
+            <a href="{{ page.get_parent.url }}">{{ page.get_parent }}</a>
+        </span>
+
+        {% if next_page %}
+            <span class="next-page-link">
+                <a href="{{ next_page.url }}">
+                    {{ next_page }}
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                </a>
+            </span>
+        {% endif %}
+    </div>
 
 {% endblock %}

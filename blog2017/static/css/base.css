@@ -23,6 +23,26 @@ p {
 	padding-bottom: 10px;
 }
 
+.navbar-static-top {
+	margin-bottom: 15px;
+}
+
+.navbar-brand {
+	line-height: 28px;
+	padding: 10px;
+}
+
+.navbar-nav>li>a {
+	padding: 10px 15px;
+	line-height: 28px;
+}
+
+.footer {
+	width: 100%;
+	height: 30px;
+	background-color: #333;
+}
+
 .row {
 	margin-left: 0;
 	margin-right: 0;
@@ -37,16 +57,25 @@ p {
 	margin: 0 auto;
 }
 
-.navbar-static-top {
-	margin-bottom: 15px;
+.article-navigation {
+	position: relative;
+	margin-bottom: 30px;
 }
 
-.navbar-brand {
-	line-height: 28px;
-	padding: 10px;
+.article-navigation span {
+	position: absolute;
 }
 
-.navbar-nav>li>a {
-	padding: 10px 15px;
-	line-height: 28px;
+.previous-page-link {
+	left: 0;
+}
+
+.parent-page-link {
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+.next-page-link {
+	right: 0;
 }

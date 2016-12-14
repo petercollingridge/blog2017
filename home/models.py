@@ -175,6 +175,14 @@ class GenericPage(Page):
         StreamFieldPanel('body'),
     ]
 
+    def get_context(self, request):
+        context = super(GenericPage, self).get_context(request)
+        # Add extra variables and return the updated context
+        #context['children'] = IndexPage.objects.live().descendant_of(self)
+        context["previous_page"] = self.get_prev_siblings().live().first()
+        context["next_page"] = self.get_next_siblings().live().first()
+        return context
+
 
 # A page containing a list of child pages.
 class IndexPage(Page):
