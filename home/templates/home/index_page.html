@@ -19,8 +19,12 @@
 		{% for child in children %}
 			<p><a href="{{ child.slug }}">{{ child.title }}<a/></p>
 		{% endfor %}
-	{% else %}
-		<p>No entries yet</p>
+	{% endif %}
+
+	{% if index_children %}
+		{% for child in index_children %}
+			<p><a href="{{ child.slug }}">{{ child.title }} ({{ child.get_children | length }} pages)<a/></p>
+		{% endfor %}
 	{% endif %}
 
 {% endblock %}

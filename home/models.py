@@ -198,6 +198,7 @@ class IndexPage(Page):
         # Add extra variables and return the updated context
         #context['children'] = IndexPage.objects.live().descendant_of(self)
         context['children'] = GenericPage.objects.child_of(self).live()
+        context['index_children'] = IndexPage.objects.child_of(self).live()
         return context
 
     def get_featured_content(self):
