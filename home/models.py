@@ -74,11 +74,9 @@ class IconLink(models.Model):
 
     panels = [
         FieldPanel('name'),
-        FieldRowPanel([
-            FieldPanel('font_awesome_class'),
-            FieldPanel('svg'),
-        ]),
         FieldPanel('url'),
+        FieldPanel('font_awesome_class'),
+        FieldPanel('svg'),
     ]
 
     class Meta:
@@ -116,18 +114,30 @@ class JSLinkFragments(Orderable, LinkFragment):
     page = ParentalKey('GenericPage', related_name='js_links')
 
 
+class CodeBlock(blocks.StructBlock):
+    code = blocks.TextBlock(required=True)
+    classes = blocks.CharBlock(required=False)
+
+    class Meta:
+        icon = 'code'
+        label = 'Code'
+        template = 'home/blocks/code_block.html'
+
+
 # https://jossingram.wordpress.com/2015/07/30/some-wagtail-v1-streamfield-examples/
 class TwoColumnBlock(blocks.StructBlock):
     left_column = blocks.StreamBlock([
         ('paragraph', blocks.RichTextBlock()),
         ('html', blocks.RawHTMLBlock()),
         ('image', ImageChooserBlock()),
+        ('code', CodeBlock()),
     ], icon='arrow-left', label='Left column content')
 
     right_column = blocks.StreamBlock([
         ('paragraph', blocks.RichTextBlock()),
         ('html', blocks.RawHTMLBlock()),
         ('image', ImageChooserBlock()),
+        ('code', CodeBlock()),
     ], icon='arrow-right', label='Right column content')
 
     class Meta:
@@ -153,6 +163,7 @@ class GenericPage(Page):
         ('paragraph', blocks.RichTextBlock()),
         ('html', blocks.RawHTMLBlock()),
         ('image', ImageChooserBlock()),
+        ('code', CodeBlock()),
         ('two_columns', TwoColumnBlock()),
     ])
 
