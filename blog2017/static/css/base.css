@@ -73,25 +73,23 @@ p {
 	margin: 0 auto;
 }
 
-.article-navigation {
-	position: relative;
-	margin-bottom: 30px;
+.navigation-name {
+	display: inline-block;
+	padding-left: 12px;
+	padding-right: 6px;
+	line-height: 20px;
 }
 
-.article-navigation span {
+.naviagation-arrow {
 	position: absolute;
-}
-
-.previous-page-link {
-	left: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .parent-page-link {
-	left: 50%;
-	-webkit-transform: translateX(-50%);
-	transform: translateX(-50%);
+	text-align: center;
 }
 
 .next-page-link {
-	right: 0;
+	text-align: right;
 }
