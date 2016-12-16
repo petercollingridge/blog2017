@@ -11,7 +11,7 @@
         <a href="{{ page.get_parent.url }}">{{ page.get_parent }}</a>
     </div>
     <div class="col-xs-4 next-page-link">
-        {% if previous_page %}
+        {% if next_page %}
             <a href="{{ next_page.url }}">
                 <span class="navigation-name">{{ next_page }}</span>
                 <span class="naviagation-arrow"><i class="fa fa-caret-right" aria-hidden="true"></i></span>
