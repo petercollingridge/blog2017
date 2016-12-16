@@ -73,6 +73,23 @@ p {
 	margin: 0 auto;
 }
 
+/* Ensure line numbers on every line of code blocks */
+li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+	list-style-type: decimal !important;
+}
+
+.prettyprint li {
+	padding: 0.25em;
+}
+
+pre.prettyprint {
+	padding: 0 !important;
+}
+
+.kwd {
+	font-weight: bold;
+}
+
 .navigation-name {
 	display: inline-block;
 	padding-left: 12px;

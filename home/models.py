@@ -114,9 +114,11 @@ class JSLinkFragments(Orderable, LinkFragment):
     page = ParentalKey('GenericPage', related_name='js_links')
 
 
+
 class CodeBlock(blocks.StructBlock):
     code = blocks.TextBlock(required=True)
-    classes = blocks.CharBlock(required=False)
+    language = blocks.CharBlock(required=False)
+    line_number = blocks.IntegerBlock(required=False)
 
     class Meta:
         icon = 'code'
@@ -146,7 +148,8 @@ class TwoColumnBlock(blocks.StructBlock):
         template = 'home/blocks/two_column_block.html'
 
 
-# A generic page which uses a Stream field with a raw HTML block so is relatively flexible
+# GenericPage uses a Streamfield with a raw HTML block so is relatively flexible
+# Used for all leave nodes (tools, tutorial pages, blog posts) other than special pages
 class GenericPage(Page):
     date = models.DateField("Post date")
 

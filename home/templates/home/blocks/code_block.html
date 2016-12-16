@@ -1,3 +1,5 @@
 {% load wagtailimages_tags %}
 
-<pre><code {% if value.classes %}class="{{value.classes}}"{% endif %}>{{ value.code }}</code></pre>
+<pre class="prettyprint linenums{% if value.line_number %}:{{ value.line_number }}{% endif %}">
+<code {% if value.language %}class="language-{{ value.language }}"{% endif %}>{{ value.code }}</code>
+</pre>
