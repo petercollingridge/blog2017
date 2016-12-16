@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% load static wagtailuserbar %}
 
-{% load wagtailcore_tags %}
 {% load wagtailcore_tags wagtailimages_tags %}
+{% include_block page.body %}
 
 {% block heading %}{{ page.title }}{% endblock %}
 
@@ -13,15 +13,17 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-	{{ page.introduction|richtext }}
-
-	<h2>Online Presence</h2>
-	<p>You can find me online in all these other places:</p>
-	{% for icon in page.icons.all %}
-		<a href="{{ icon.url }}" class="social-icon">
-	        {{ icon.image|safe }}
-	        <div>{{ icon.name }}</div>
-		</a>
-	{% endfor%}
-
+	<article>
+        {% for block in page.body %}
+            {% if block.block_type == 'heading' %}
+                <h2>{{ block.value }}</h2>
+            {% elif block.block_type == 'icon_block' %}
+               {% include_block block %}
+            {% else %}
+                <section class="block_type-{{ block.block_type }}">
+                   {% include_block block %}
+                </section>
+            {% endif %}
+        {% endfor %}
+    </article>
 {% endblock %}

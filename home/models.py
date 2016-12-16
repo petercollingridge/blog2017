@@ -7,7 +7,7 @@ from modelcluster.fields import ParentalKey
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField, StreamField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, FieldRowPanel, StreamFieldPanel, InlinePanel, PageChooserPanel
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel, InlinePanel, PageChooserPanel
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 
@@ -58,42 +58,28 @@ class HomePage(Page):
         return context
 
 
-# Non-snippet version of Icon
-class IconLink(models.Model):
-    name = models.CharField(max_length=255)
-    font_awesome_class = models.CharField(max_length=255, blank=True)
-    svg = models.CharField(max_length=2048, blank=True)
-    url = models.URLField(null=True, blank=True)
-
-    @property
-    def image(self):
-        if self.font_awesome_class:
-            return ('<i class="fa %s fa-4x"></i>' % self.font_awesome_class)
-        else:
-            return '<i>%s</i>' % self.svg
-
-    panels = [
-        FieldPanel('name'),
-        FieldPanel('url'),
-        FieldPanel('font_awesome_class'),
-        FieldPanel('svg'),
-    ]
+# SVG icon from font-awesome or elsewhere
+class IconBlock(blocks.StructBlock):
+    name = blocks.CharBlock(max_length=255, required=True)
+    font_awesome_class = blocks.CharBlock(max_length=255, required=False)
+    svg = blocks.TextBlock(required=False)
+    url = blocks.URLBlock(required=False)
 
     class Meta:
-        abstract = True
-
-
-# Sections for the home page collected together in an orderable way
-class IconLinks(Orderable, IconLink):
-    page = ParentalKey('AboutPage', related_name='icons')
+        icon = 'list-ul'
+        label = 'Icon'
+        template = 'home/blocks/icon_block.html'
 
 
 class AboutPage(Page):
-    introduction = RichTextField(blank=True)
+    body = StreamField([
+        ('heading', blocks.CharBlock(classname="full title")),
+        ('paragraph', blocks.RichTextBlock()),
+        ('icon_block', IconBlock()),
+    ])
 
     content_panels = Page.content_panels + [
-        FieldPanel('introduction', classname="full"),
-        InlinePanel('icons', label="social icons"),
+        StreamFieldPanel('body'),
     ]
 
 
@@ -112,7 +98,6 @@ class CSSLinkFragments(Orderable, LinkFragment):
 
 class JSLinkFragments(Orderable, LinkFragment):
     page = ParentalKey('GenericPage', related_name='js_links')
-
 
 
 class CodeBlock(blocks.StructBlock):
