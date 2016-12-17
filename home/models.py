@@ -7,7 +7,7 @@ from modelcluster.fields import ParentalKey
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField, StreamField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel, InlinePanel, PageChooserPanel
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel, InlinePanel, PageChooserPanel, MultiFieldPanel
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 
@@ -175,10 +175,26 @@ class GenericPage(Page):
 # A page containing a list of child pages.
 class IndexPage(Page):
     introduction = RichTextField(blank=True)
+    short_description = RichTextField(blank=True)
+
+    featured_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
 
     content_panels = Page.content_panels + [
         FieldPanel('introduction', classname="full"),
-        InlinePanel('featured_content', label="Featured content"),
+        MultiFieldPanel(
+            [
+                ImageChooserPanel('featured_image'),
+                FieldPanel('short_description'),
+            ],
+            heading="Featured content information",
+            classname="collapsible collapsed"
+        ),
     ]
 
     def get_context(self, request):
@@ -188,10 +204,6 @@ class IndexPage(Page):
         context['children'] = GenericPage.objects.child_of(self).live()
         context['index_children'] = IndexPage.objects.child_of(self).live()
         return context
-
-    def get_featured_content(self):
-        children = GenericPage.objects.child_of(self).live()
-        return [children.get(pk=content.link_page) for content in self.featured_content.all()]
 
 
 # Link to a featured page within an index
