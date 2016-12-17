@@ -1,0 +1,30 @@
+.contact-form {
+	font-size: 0.9em;
+}
+
+.contact-form label {
+	display: block;
+	margin-bottom: 0;
+}
+
+.contact-form label::after { 
+    content: ":";
+}
+
+.contact-form input {
+	background-color: #f4f4f4;
+    width: 480px;
+}
+
+.contact-form input:focus {
+	background-color: inherit;
+}
+
+.contact-form .btn {
+	font-size: 1.1em;
+}
+
+.contact-form textarea { 
+    width: 480px;
+    height: 180px;
+}

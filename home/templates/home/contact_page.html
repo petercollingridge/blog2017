@@ -1,16 +1,23 @@
+{% extends "base.html" %}
 {% load wagtailcore_tags %}
 
-<html>
-	<head>
-		<title>{{ page.title }}</title>
-	</head>
-	<body>
-		<h1>{{ page.title }}</h1>
-		{{ page.intro | richtext }}
-		<form action="{% pageurl page %}" method="POST">
-			{% csrf_token %}
-			{{ form.as_p }}
-			<input type="submit">
-		</form>
-	</body>
-</html>
+{% block heading %}{{ page.title }}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" type="text/css" href="/static/css/contact_me.css">{% endblock %}
+
+{% block content %}
+	{{ page.intro | richtext }}
+	<form class="contact-form" action="{% pageurl page %}" method="POST">
+		{% csrf_token %}
+		{% for field in form %}
+			<div class="form-group">
+				{{ field.errors }}
+	   			{{ field.label_tag }}
+	    		{{ field }}
+	    		{% if field.help_text %}
+        			<p class="help">{{ field.help_text | safe }}</p>
+        		{% endif %}
+			</div>
+		{% endfor %}
+		<input class="btn btn-default" type="submit">
+	</form>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block heading %}{{ page.title }}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" type="text/css" href="/static/css/contact_me.css">{% endblock %}
+
+{% block content %}
+	{{ page.thank_you_text | safe }}
+
+	<p><a href="/">Home</a></p>
+{% endblock %}
