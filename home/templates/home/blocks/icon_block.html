@@ -1,8 +1,8 @@
-{% if value.url %}<a href="{{ value.url }}" class="social-icon">{% endif %}
+{% if value.url %}<a href="{{ value.url }}"{% else %}<div{% endif %} class="social-icon">
 {% if value.svg %}
 	<i>{{ value.svg|safe }}</i>
 {% else %}
 	<i class="fa {{ value.font_awesome_class }} fa-4x"></i>
 {% endif %}
 	<div>{{ value.name }}</div>
-{% if value.url %}</a>{% endif %}
+{% if value.url %}</a>{% else %}</div>{% endif %}

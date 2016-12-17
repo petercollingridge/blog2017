@@ -10,11 +10,20 @@
 	color: #333;
 }
 
+.social-icon svg {
+	width: 64px;
+	height: 64px;
+}
+
+.social-icon svg path {
+	fill: #333;
+}
+
 .social-icon:hover {
 	text-decoration: none;
 }
 
-.social-icon:hover svg path{
+a.social-icon:hover svg path {
 	fill: #004080;
 }
 
