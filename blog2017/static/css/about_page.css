@@ -10,6 +10,10 @@
 	color: #333;
 }
 
+.social-icon:hover {
+	text-decoration: none;
+}
+
 .social-icon svg {
 	width: 64px;
 	height: 64px;
@@ -17,10 +21,6 @@
 
 .social-icon svg path {
 	fill: #333;
-}
-
-.social-icon:hover {
-	text-decoration: none;
 }
 
 a.social-icon:hover svg path {
