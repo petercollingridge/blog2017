@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block heading %}{{ page.title }}{% endblock %}
 
@@ -22,9 +22,19 @@
 	{% endif %}
 
 	{% if index_children %}
-		{% for child in index_children %}
-			<p><a href="{{ child.slug }}">{{ child.title }} ({{ child.get_children | length }} pages)<a/></p>
-		{% endfor %}
+		<div class="row">
+			{% for child in index_children %}
+				<div class="col-md-4 col-sm-6">
+					<a href="{{ child.slug }}">
+						{% if child.featured_image %}
+							{% image child.featured_image width-100 %}
+						{% endif %}
+						<div>{{ child.title }}</div>
+						<div>({{ child.get_children | length }} pages)</div>
+					<a/>
+				</div>
+			{% endfor %}
+		</div>
 	{% endif %}
 
 {% endblock %}
