@@ -4,7 +4,6 @@ html {
 
 body {
 	font-family: "Josefin Sans", "Proxima Nova", Helvetica, Corbel, sans-serif;
-	font-size: 20px;
 	height: 100%;
 }
 
@@ -33,27 +32,32 @@ p {
 	padding-bottom: 10px;
 }
 
+.main {
+	font-size: 20px;
+	padding-bottom: 45px;
+}
+
+.navbar {
+	font-size: 18px;
+}
+
 .navbar-static-top {
 	margin-bottom: 15px;
 }
 
 .navbar-brand {
-	line-height: 28px;
+	line-height: 36px;
 	padding: 10px;
 }
 
 .navbar-nav>li>a {
-	padding: 10px 15px;
-	line-height: 28px;
+	padding: 12px 15px 8px 15px;
+	line-height: 30px;
 }
 
 #body {
 	min-height: 100%;
    	position: relative;
-}
-
-.main {
-	padding-bottom: 45px;
 }
 
 .footer {
