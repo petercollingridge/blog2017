@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block heading %}{{ page.title }}{% endblock %}
+
+{% block body_class %}template-section-index {{ page.title | lower }}-index{% endblock %}
+
+{% block content %}
+	{{ page.introduction | richtext }}
+
+	<hr>
+
+	{% if index_children %}
+		<div class="row">
+			{% for child in index_children %}
+				<div class="featured-page col-md-4 col-sm-6">
+					<a class="featured-page-link" href="{{ child.slug }}">
+						{% if child.featured_image %}
+							{% image child.featured_image width-100 %}
+						{% endif %}
+						<div class="page-title">{{ child.title }}</div>
+						<div class="page-details">({{ child.get_children | length }} pages)</div>
+					</a>
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}
+
+	<hr>
+
+	<h2>More</h2>
+	{% if children %}
+		{% for child in children %}
+			<p><a href="{{ child.slug }}">{{ child.title }}</a></p>
+		{% endfor %}
+	{% endif %}
+
+{% endblock %}

@@ -125,3 +125,24 @@ pre.prettyprint {
 .next-page-link {
 	text-align: right;
 }
+
+.featured-page {
+	text-align: center;
+	border-right: 1px solid #ddd;
+}
+
+.featured-page .page-title {
+	font-size: 1.1em;
+}
+
+.featured-page .page-title:hover {
+	text-decoration: underline;
+}
+
+.featured-page .page-details {
+	font-size: 0.8em;
+}
+
+.featured-page-link:hover {
+	text-decoration: none;
+}

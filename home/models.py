@@ -233,25 +233,21 @@ class IndexPage(Page):
         return context
 
 
-# Link to a featured page within an index
-class FeaturedContent(models.Model):
-    description = models.CharField(max_length=255)
-    link_page = models.ForeignKey(
-        'wagtailcore.Page',
-        null=True,
-        blank=True,
-        related_name='+'
-    )
+# An index page for a section with links to the child pages
+class SectionPage(Page):
+    introduction = RichTextField(blank=True)
 
-    panels = [
-        FieldPanel('description'),
-        PageChooserPanel('link_page', page_type=GenericPage),
+    content_panels = Page.content_panels + [
+        FieldPanel('introduction', classname="full"),
     ]
 
+    def get_context(self, request):
+        context = super(SectionPage, self).get_context(request)
 
-# A group of featured content to display on the home page
-class FeaturedContentSet(Orderable, FeaturedContent):
-    page = ParentalKey('IndexPage', related_name='featured_content')
+        # Add extra variables and return the updated context
+        context['children'] = GenericPage.objects.child_of(self).live()
+        context['index_children'] = IndexPage.objects.child_of(self).live()
+        return context
 
 
 # Page for prototyping the homepage
