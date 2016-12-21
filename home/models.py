@@ -164,6 +164,7 @@ class TwoColumnBlock(blocks.StructBlock):
 # Used for all leave nodes (tools, tutorial pages, blog posts) other than special pages
 class GenericPage(Page):
     date = models.DateField("Post date")
+    show_siblings = models.BooleanField()
 
     main_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -184,6 +185,7 @@ class GenericPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('date'),
+        FieldPanel('show_siblings'),
         InlinePanel('css_links', label="CSS links"),
         InlinePanel('js_links', label="JS links"),
         ImageChooserPanel('main_image'),

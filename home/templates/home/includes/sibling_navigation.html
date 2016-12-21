@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-4">
-        {% if previous_page %}
+        {% if previous_page and page.show_siblings %}
             <a href="{{ previous_page.url }}">
                 <span class="naviagation-arrow"><i class="fa fa-caret-left" aria-hidden="true"></i></span>
                 <span class="navigation-name">{{ previous_page }}</span>
@@ -11,7 +11,7 @@
         <a href="{{ page.get_parent.url }}">{{ page.get_parent }}</a>
     </div>
     <div class="col-xs-4 next-page-link">
-        {% if next_page %}
+        {% if next_page and page.show_siblings %}
             <a href="{{ next_page.url }}">
                 <span class="navigation-name">{{ next_page }}</span>
                 <span class="naviagation-arrow"><i class="fa fa-caret-right" aria-hidden="true"></i></span>
