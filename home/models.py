@@ -110,6 +110,7 @@ class ContactPage(AbstractEmailForm):
         ], "Email")
     ]
 
+
 # A relative link path (used for CSS and JS)
 class LinkFragment(models.Model):
     path = models.CharField(max_length=255, help_text="Relative URL")
@@ -210,6 +211,18 @@ class PageWithSiblings(GenericPage):
         return context
 
 
+# Generic page, but showing list of child pages
+# Used as the first page for tutorials and articles
+class IntroductionPage(GenericPage):
+    def get_context(self, request):
+        context = super(IntroductionPage, self).get_context(request)
+        # Add extra variables and return the updated context
+        #context['children'] = IndexPage.objects.live().descendant_of(self)
+        context['children'] = GenericPage.objects.child_of(self).live()
+        context['introduction'] = context['children'].first()
+        return context
+
+
 # A page containing a list of child pages.
 class IndexPage(Page):
     introduction = RichTextField(blank=True)
@@ -257,7 +270,7 @@ class SectionPage(Page):
 
         # Add extra variables and return the updated context
         context['children'] = GenericPage.objects.child_of(self).live()
-        context['index_children'] = IndexPage.objects.child_of(self).live()
+        context['index_children'] = IntroductionPage.objects.child_of(self).live()
         return context
 
 

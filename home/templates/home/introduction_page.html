@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% include_block page.body %}
+
+{% block body_class %}template-blogpage{% endblock %}
+
+{% if page.css_links.all %}
+    {% block extra_css %}
+        {% for link in page.css_links.all %}
+            <link rel="stylesheet" type="text/css" href="/static/css/{{ link.path }}">
+        {% endfor%}
+    {% endblock %}
+{% endif %}
+
+{% block extra_js %}
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    {% if page.js_links.all %}
+        {% for link in page.js_links.all %}
+            <script type="text/javascript" src="/static/js/{{ link.path }}"></script>
+        {% endfor%}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-xs-12 parent-page-link">
+            <a href="{{ page.get_parent.url }}">Back to {{ page.get_parent }}</a>
+        </div>
+    </div>
+
+    <hr>
+
+    {% if page.date %}
+        <p class="meta">{{ page.date }}</p>
+    {% endif %}
+
+    <article>
+        <div class="row">
+            <div class="col-sm-5">
+                <ol>
+                    {% for child in children %}
+                        <li><a href="{{ child.slug }}">{{ child.title }}</a></li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <div class="col-sm-7">
+                {% if page.body %}
+                    {% with introduction=page.body.0 %}
+                        {{ introduction.value }}
+                    {% endwith %}
+                {% endif %}
+            </div>
+        </div>
+
+        {% for block in page.body %}
+            {% if block != page.body.0 %}
+                <div class="row">
+                    {% if block.block_type == 'heading' %}
+                        <h2>{{ block.value }}</h2>
+                    {% elif block.block_type == 'image' %}
+                        {% image block.value width-900 class="img-responsive" %}
+                    {% elif block.block_type == 'code' %}
+                        {% include_block block %}
+                    {% else %}
+                        <section class="block_type-{{ block.block_type }}">
+                           {% include_block block %}
+                        </section>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </article>
+
+    <div class="row">
+        <div class="col-xs-12 parent-page-link">
+            <a href="{{ page.get_parent.url }}">Back to {{ page.get_parent }}</a>
+        </div>
+    </div>
+
+{% endblock %}
