@@ -25,11 +25,7 @@
 
 {% block content %}
 
-    <div class="row">
-        <div class="col-xs-12 parent-page-link">
-            <a href="{{ page.get_parent.url }}">Back to {{ page.get_parent }}</a>
-        </div>
-    </div>
+    {% include "home/includes/sibling_navigation.html" %}
 
     <hr>
     <p class="meta">{{ page.date }}</p>
@@ -52,10 +48,6 @@
         {% endfor %}
     </article>
 
-    <div class="row">
-        <div class="col-xs-12 parent-page-link">
-            <a href="{{ page.get_parent.url }}">Back to {{ page.get_parent }}</a>
-        </div>
-    </div>
+    {% include "home/includes/sibling_navigation.html" %}
 
 {% endblock %}

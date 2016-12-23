@@ -161,12 +161,12 @@ class TwoColumnBlock(blocks.StructBlock):
 
 
 # GenericPage uses a Streamfield with a raw HTML block so is relatively flexible
-# Used for all leave nodes (tools, tutorial pages, blog posts) other than special pages
+# Used for leaf nodes where we don't want to show links to siblings
 class GenericPage(Page):
-    date = models.DateField("Post date")
-    show_siblings = models.BooleanField()
+    date = models.DateField("Post date", blank=True)
+    short_description = RichTextField(blank=True)
 
-    main_image = models.ForeignKey(
+    featured_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
         blank=True,
@@ -185,13 +185,22 @@ class GenericPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('date'),
-        FieldPanel('show_siblings'),
         InlinePanel('css_links', label="CSS links"),
         InlinePanel('js_links', label="JS links"),
-        ImageChooserPanel('main_image'),
+        MultiFieldPanel(
+            [
+                ImageChooserPanel('featured_image'),
+                FieldPanel('short_description'),
+            ],
+            heading="Featured content information",
+            classname="collapsible collapsed"
+        ),
         StreamFieldPanel('body'),
     ]
 
+
+# A GenericPage with links to previous and next pages
+class PageWithSiblings(GenericPage):
     def get_context(self, request):
         context = super(GenericPage, self).get_context(request)
         # Add extra variables and return the updated context
