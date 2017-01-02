@@ -1,53 +1,9 @@
-{% extends "base.html" %}
+{% extends "article.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
-
-{% include_block page.body %}
-
-{% block body_class %}template-blogpage{% endblock %}
-
-{% if page.css_links.all %}
-    {% block extra_css %}
-        {% for link in page.css_links.all %}
-            <link rel="stylesheet" type="text/css" href="/static/css/{{ link.path }}">
-        {% endfor%}
-    {% endblock %}
-{% endif %}
-
-{% block extra_js %}
-    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    {% if page.js_links.all %}
-        {% for link in page.js_links.all %}
-            <script type="text/javascript" src="/static/js/{{ link.path }}"></script>
-        {% endfor%}
-    {% endif %}
+{% block top-navigation %}
+    {% include "home/includes/sibling_navigation.html" %}
 {% endblock %}
 
-{% block content %}
-
+{% block bottom-navigation %}
     {% include "home/includes/sibling_navigation.html" %}
-
-    <hr>
-    <p class="meta">{{ page.date }}</p>
-
-    <article>
-        {% for block in page.body %}
-            <div class="row">
-                {% if block.block_type == 'heading' %}
-                    <h2>{{ block.value }}</h2>
-                {% elif block.block_type == 'image' %}
-                    {% image block.value width-900 class="img-responsive" %}
-                {% elif block.block_type == 'code' %}
-                    {% include_block block %}
-                {% else %}
-                    <section class="block_type-{{ block.block_type }}">
-                       {% include_block block %}
-                    </section>
-                {% endif %}
-            </div>
-        {% endfor %}
-    </article>
-
-    {% include "home/includes/sibling_navigation.html" %}
-
 {% endblock %}

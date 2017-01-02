@@ -68,6 +68,10 @@ p {
 	bottom: 0;
 }
 
+.date {
+	text-align: right;
+}
+
 .row {
 	margin-left: 0;
 	margin-right: 0;
