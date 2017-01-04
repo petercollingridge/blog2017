@@ -17,100 +17,6 @@ from wagtail.wagtailforms.models import AbstractEmailForm, AbstractFormField
 from wagtail.wagtailforms.edit_handlers import FormSubmissionsPanel
 
 
-# A section of content, such as Tutorials to show on the home page
-class HomePageSection(models.Model):
-    title = models.CharField(max_length=255)
-    link_page = models.ForeignKey(
-        'wagtailcore.Page',
-        null=True,
-        blank=True,
-        related_name='+'
-    )
-    body = RichTextField(blank=True)
-
-    panels = [
-        FieldPanel('title'),
-        PageChooserPanel('link_page'),
-        FieldPanel('body'),
-    ]
-
-    class Meta:
-        abstract = True
-
-
-# Sections for the home page collected together in an orderable way
-class HomePageSections(Orderable, HomePageSection):
-    page = ParentalKey('HomePage', related_name='sections')
-
-
-class HomePage(Page):
-    introduction = RichTextField(blank=True)
-
-    content_panels = Page.content_panels + [
-        FieldPanel('introduction', classname="full"),
-        InlinePanel('sections', label="Sections"),
-    ]
-
-    # Return sections to show on front page
-    def get_sections(self):
-        return IndexPage.objects.filter(path__startswith=self.path).order_by('path')
-
-    # Get a list of child pages which will be the main sections of the site
-    def get_context(self, request):
-        context = super(HomePage, self).get_context(request)
-        # Add extra variables and return the updated context
-        context['children'] = IndexPage.objects.child_of(self).live()
-        return context
-
-
-# SVG icon from font-awesome or elsewhere
-class IconBlock(blocks.StructBlock):
-    name = blocks.CharBlock(max_length=255, required=True)
-    font_awesome_class = blocks.CharBlock(max_length=255, required=False)
-    svg = blocks.TextBlock(required=False)
-    url = blocks.URLBlock(required=False)
-
-    class Meta:
-        icon = 'list-ul'
-        label = 'Icon'
-        template = 'home/blocks/icon_block.html'
-
-
-class AboutPage(Page):
-    body = StreamField([
-        ('heading', blocks.CharBlock(classname="full title")),
-        ('paragraph', blocks.RichTextBlock()),
-        ('icon_block', IconBlock()),
-    ])
-
-    content_panels = Page.content_panels + [
-        StreamFieldPanel('body'),
-    ]
-
-
-class FormField(AbstractFormField):
-    page = ParentalKey('ContactPage', related_name='form_fields')
-
-
-class ContactPage(AbstractEmailForm):
-    intro = RichTextField(blank=True)
-    thank_you_text = RichTextField(blank=True)
-
-    content_panels = AbstractEmailForm.content_panels + [
-        FormSubmissionsPanel(),
-        FieldPanel('intro', classname="full"),
-        InlinePanel('form_fields', label="Form fields"),
-        FieldPanel('thank_you_text', classname="full"),
-        MultiFieldPanel([
-            FieldRowPanel([
-                FieldPanel('from_address', classname="col6"),
-                FieldPanel('to_address', classname="col6"),
-            ]),
-            FieldPanel('subject')
-        ], "Email")
-    ]
-
-
 # A relative link path (used for CSS and JS)
 class LinkFragment(models.Model):
     path = models.CharField(max_length=255, help_text="Relative URL")
@@ -162,7 +68,7 @@ class TwoColumnBlock(blocks.StructBlock):
 
 
 # GenericPage uses a Streamfield with a raw HTML block so is relatively flexible
-# Used for leaf nodes where we don't want to show links to siblings
+# Used for leaf nodes where we don't want to show links to siblings, such as tool pages
 class GenericPage(Page):
     date = models.DateField("Post date", blank=True)
     short_description = RichTextField(blank=True)
@@ -269,9 +175,104 @@ class SectionPage(Page):
         context = super(SectionPage, self).get_context(request)
 
         # Add extra variables and return the updated context
-        context['children'] = GenericPage.objects.child_of(self).live()
-        context['index_children'] = IntroductionPage.objects.child_of(self).live()
+        all_children = GenericPage.objects.child_of(self).live().order_by('-date')
+        #context['index_children'] = IntroductionPage.objects.child_of(self).live()
+        context['children'] = all_children
         return context
+
+
+# A section of content, such as Tutorials to show on the home page
+class HomePageSection(models.Model):
+    title = models.CharField(max_length=255)
+    link_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        related_name='+'
+    )
+    body = RichTextField(blank=True)
+
+    panels = [
+        FieldPanel('title'),
+        PageChooserPanel('link_page'),
+        FieldPanel('body'),
+    ]
+
+    class Meta:
+        abstract = True
+
+
+# Sections for the home page collected together in an orderable way
+class HomePageSections(Orderable, HomePageSection):
+    page = ParentalKey('HomePage', related_name='sections')
+
+
+class HomePage(Page):
+    introduction = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('introduction', classname="full"),
+        InlinePanel('sections', label="Sections"),
+    ]
+
+    # Return sections to show on front page
+    def get_sections(self):
+        return IndexPage.objects.filter(path__startswith=self.path).order_by('path')
+
+    # Get a list of child pages which will be the main sections of the site
+    def get_context(self, request):
+        context = super(HomePage, self).get_context(request)
+        # Add extra variables and return the updated context
+        context['children'] = IndexPage.objects.child_of(self).live()
+        return context
+
+
+# SVG icon from font-awesome or elsewhere
+class IconBlock(blocks.StructBlock):
+    name = blocks.CharBlock(max_length=255, required=True)
+    font_awesome_class = blocks.CharBlock(max_length=255, required=False)
+    svg = blocks.TextBlock(required=False)
+    url = blocks.URLBlock(required=False)
+
+    class Meta:
+        icon = 'list-ul'
+        label = 'Icon'
+        template = 'home/blocks/icon_block.html'
+
+
+class AboutPage(Page):
+    body = StreamField([
+        ('heading', blocks.CharBlock(classname="full title")),
+        ('paragraph', blocks.RichTextBlock()),
+        ('icon_block', IconBlock()),
+    ])
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('body'),
+    ]
+
+
+class FormField(AbstractFormField):
+    page = ParentalKey('ContactPage', related_name='form_fields')
+
+
+class ContactPage(AbstractEmailForm):
+    intro = RichTextField(blank=True)
+    thank_you_text = RichTextField(blank=True)
+
+    content_panels = AbstractEmailForm.content_panels + [
+        FormSubmissionsPanel(),
+        FieldPanel('intro', classname="full"),
+        InlinePanel('form_fields', label="Form fields"),
+        FieldPanel('thank_you_text', classname="full"),
+        MultiFieldPanel([
+            FieldRowPanel([
+                FieldPanel('from_address', classname="col6"),
+                FieldPanel('to_address', classname="col6"),
+            ]),
+            FieldPanel('subject')
+        ], "Email")
+    ]
 
 
 # Page for prototyping the homepage
