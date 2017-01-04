@@ -137,7 +137,15 @@ pre.prettyprint {
 
 .featured-page {
 	text-align: center;
-	border-right: 1px solid #ddd;
+	/*border-left: 1px solid #ddd;*/
+}
+
+.row .featured-page:first-child {
+	/*border: none;*/
+}
+
+.featured-page:hover {
+	background-color: #f4f4f4;
 }
 
 .featured-page .page-title {
@@ -150,6 +158,7 @@ pre.prettyprint {
 
 .featured-page .page-details {
 	font-size: 0.8em;
+	color: black;
 }
 
 .featured-page-link:hover {

@@ -129,7 +129,7 @@ class IntroductionPage(GenericPage):
         return context
 
 
-# A page containing a list of child pages.
+# A page containing links to child pages.
 class IndexPage(Page):
     introduction = RichTextField(blank=True)
     short_description = RichTextField(blank=True)
@@ -156,14 +156,20 @@ class IndexPage(Page):
 
     def get_context(self, request):
         context = super(IndexPage, self).get_context(request)
+
         # Add extra variables and return the updated context
-        #context['children'] = IndexPage.objects.live().descendant_of(self)
-        context['children'] = GenericPage.objects.child_of(self).live()
-        context['index_children'] = IndexPage.objects.child_of(self).live()
+        all_children = GenericPage.objects.child_of(self).live().order_by('-date')
+        not_featured = all_children.filter(featured_image__isnull=True).filter(short_description__isnull=True)
+        #context['index_children'] = IntroductionPage.objects.child_of(self).live()
+        context['children'] = not_featured
+        context['featured'] = all_children.exclude(pk__in=not_featured)
+
+        print len(all_children)
+
         return context
 
 
-# An index page for a section with links to the child pages
+# Duplicate of IndexPage - to remove
 class SectionPage(Page):
     introduction = RichTextField(blank=True)
 
@@ -176,8 +182,13 @@ class SectionPage(Page):
 
         # Add extra variables and return the updated context
         all_children = GenericPage.objects.child_of(self).live().order_by('-date')
+        not_featured = all_children.filter(featured_image__isnull=True).filter(short_description__isnull=True)
         #context['index_children'] = IntroductionPage.objects.child_of(self).live()
-        context['children'] = all_children
+        context['children'] = not_featured
+        context['featured'] = all_children.exclude(pk__in=not_featured)
+
+        print len(context['children'])
+
         return context
 
 

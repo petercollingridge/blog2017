@@ -4,37 +4,35 @@
 
 {% block heading %}{{ page.title }}{% endblock %}
 
-{% block body_class %}template-homepage{% endblock %}
+{% block body_class %}template-section-index {{ page.title | lower }}-index{% endblock %}
 
 {% block content %}
-	{{ page.introduction|richtext }}
-
-	{% for c in page.featured_content.all %}
-		<p>{{ c.title }}</p>
-	{% endfor %}
+	{{ page.introduction | richtext }}
 
 	<hr>
+
+	{% if featured %}
+		<div class="row">
+			{% for child in featured %}
+				<div class="featured-page col-md-4 col-sm-6">
+					<a class="featured-page-link" href="{{ child.slug }}">
+						<div class="page-title">{{ child.title }}</div>
+						{% if child.featured_image %}
+							{% image child.featured_image width-100 %}
+						{% endif %}
+						{% if child.short_description %}
+							<div class="page-details">{{ child.short_description | richtext }}</div>
+						{% endif %}
+					<a/>
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}
 
 	{% if children %}
 		{% for child in children %}
 			<p><a href="{{ child.slug }}">{{ child.title }}<a/></p>
 		{% endfor %}
-	{% endif %}
-
-	{% if index_children %}
-		<div class="row">
-			{% for child in index_children %}
-				<div class="col-md-4 col-sm-6">
-					<a href="{{ child.slug }}">
-						{% if child.featured_image %}
-							{% image child.featured_image width-100 %}
-						{% endif %}
-						<div>{{ child.title }}</div>
-						<div>({{ child.get_children | length }} pages)</div>
-					<a/>
-				</div>
-			{% endfor %}
-		</div>
 	{% endif %}
 
 {% endblock %}
