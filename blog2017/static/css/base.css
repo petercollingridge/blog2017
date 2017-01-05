@@ -135,28 +135,40 @@ pre.prettyprint {
 	text-align: right;
 }
 
-.featured-page {
-	text-align: center;
-	/*border-left: 1px solid #ddd;*/
+.featured-page-container {
+	padding: 0 2px;
+	margin-bottom: 8px;
 }
 
-.row .featured-page:first-child {
-	/*border: none;*/
+.featured-page {
+	padding: 5px;
+	height: 110px;
+	text-align: center;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
 }
 
 .featured-page:hover {
 	background-color: #f4f4f4;
 }
 
-.featured-page .page-title {
+.featured-page-image {
+	float: left;
+}
+
+.featured-page-text {
+	padding: 5px;
+}
+
+.featured-page-title {
 	font-size: 1.1em;
 }
 
-.featured-page .page-title:hover {
+.featured-page-title:hover {
 	text-decoration: underline;
 }
 
-.featured-page .page-details {
+.featured-page-details {
 	font-size: 0.8em;
 	color: black;
 }

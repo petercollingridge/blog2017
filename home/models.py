@@ -164,8 +164,6 @@ class IndexPage(Page):
         context['children'] = not_featured
         context['featured'] = all_children.exclude(pk__in=not_featured)
 
-        print len(all_children)
-
         return context
 
 
