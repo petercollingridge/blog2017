@@ -159,10 +159,10 @@ class IndexPage(Page):
 
         # Add extra variables and return the updated context
         all_children = GenericPage.objects.child_of(self).live().order_by('-date')
-        not_featured = all_children.filter(featured_image__isnull=True).filter(short_description__isnull=True)
+        featured = all_children.exclude(short_description__exact='').exclude(short_description__isnull=True)
         #context['index_children'] = IntroductionPage.objects.child_of(self).live()
-        context['children'] = not_featured
-        context['featured'] = all_children.exclude(pk__in=not_featured)
+        context['children'] = all_children.exclude(pk__in=featured)
+        context['featured'] = featured
 
         return context
 

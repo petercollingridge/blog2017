@@ -29,7 +29,7 @@
 									<div class="featured-page-details">{{ child.short_description | richtext }}</div>
 								{% endif %}
 							</div>
-						<a/>
+						</a>
 					</div>
 				</div>
 			{% endfor %}
@@ -37,6 +37,10 @@
 	{% endif %}
 
 	{% if children %}
+		{% if featured %}
+		<h2>More</h2>
+		{% endif %}
+
 		{% for child in children %}
 			<p><a href="{{ child.slug }}">{{ child.title }}<a/></p>
 		{% endfor %}
