@@ -1,5 +1,5 @@
 .social-icon {
-	width: 72px;
+	width: 55px;
 	display: inline-block;
 	text-align: center;
 	line-height: 16px;
@@ -15,8 +15,8 @@
 }
 
 .social-icon svg {
-	width: 64px;
-	height: 64px;
+	width: 48px;
+	height: 48px;
 }
 
 .social-icon svg path {
@@ -29,4 +29,8 @@ a.social-icon:hover svg path {
 
 .social-icon i {
 	margin-bottom: 5px;
+}
+
+h2 {
+	margin-top: 20px;
 }
