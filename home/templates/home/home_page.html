@@ -16,7 +16,6 @@
 	{{ page.introduction|richtext }}
 
 	{% for section in page.get_sections %}
-		<hr>
 		<h2>{{ section.title }}</h2>
 		<p>{{ section.introduction|richtext }}</p>
 
@@ -27,21 +26,9 @@
 			<div><a href="{{ section.slug }}/{{ content.link_page.slug }}">{{ content.title }}</a></div>
 		{% endfor %}
 
-		<p><a href="{{ section.slug }}">More {{ section.title }} <i class="fa fa-caret-right" aria-hidden="true"></i></a></p>
+		<p>
+			<a href="{{ section.slug }}">More {{ section.title }} <i class="fa fa-caret-right" aria-hidden="true"></i></a>
+		</p>
 	{% endfor %}
-
-	<hr>
-
-	<div class="row">
-		<div class="col-sm-4">
-			<div class="home-toolbox"> SVG optimiser</div>
-		</div>
-			<div class="col-sm-4">
-			<div class="home-toolbox">SVG editor</div>
-		</div>
-		<div class="col-sm-4">
-			<div class="home-toolbox">SVG Animator</div>
-		</div>
-	</div>
 
 {% endblock %}

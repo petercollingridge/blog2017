@@ -262,5 +262,15 @@ class ContactPage(AbstractEmailForm):
 
 
 # Page for prototyping the homepage
-class HomePageTest(Page):
-    pass
+class HomePageTest2(Page):
+    body = StreamField([
+        ('heading', blocks.CharBlock(classname="full title")),
+        ('paragraph', blocks.RichTextBlock()),
+        ('html', blocks.RawHTMLBlock()),
+        ('image', ImageChooserBlock()),
+        ('featured_pages', blocks.ListBlock(blocks.PageChooserBlock(label="Featured page")))
+    ])
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('body'),
+    ]
