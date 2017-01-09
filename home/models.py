@@ -167,29 +167,6 @@ class IndexPage(Page):
         return context
 
 
-# Duplicate of IndexPage - to remove
-class SectionPage(Page):
-    introduction = RichTextField(blank=True)
-
-    content_panels = Page.content_panels + [
-        FieldPanel('introduction', classname="full"),
-    ]
-
-    def get_context(self, request):
-        context = super(SectionPage, self).get_context(request)
-
-        # Add extra variables and return the updated context
-        all_children = GenericPage.objects.child_of(self).live().order_by('-date')
-        not_featured = all_children.filter(featured_image__isnull=True).filter(short_description__isnull=True)
-        #context['index_children'] = IntroductionPage.objects.child_of(self).live()
-        context['children'] = not_featured
-        context['featured'] = all_children.exclude(pk__in=not_featured)
-
-        print len(context['children'])
-
-        return context
-
-
 # A section of content, such as Tutorials to show on the home page
 class HomePageSection(models.Model):
     title = models.CharField(max_length=255)
