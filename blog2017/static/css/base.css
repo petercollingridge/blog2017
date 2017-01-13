@@ -138,19 +138,30 @@ pre.prettyprint {
 }
 
 .featured-page-container {
-	padding: 0 2px;
+	padding: 0 5px;
 	margin-bottom: 8px;
 }
 
 .featured-page {
 	height: 110px;
 	text-align: center;
-	border-left: 1px solid #ccc;
-	border-right: 1px solid #ccc;
+	-webkit-box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.3);
+	-moz-box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.3);
+	box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.3);
+	transition: all 300ms ease;
 }
 
 .featured-page:hover {
-	background-color: #f4f4f4;
+	/*background-color: #f4f4f4;
+	-moz-transform: rotate(-2deg) translateY(-5px);
+	-webkit-transform: rotate(-2deg) translateY(-5px);
+	-o-transform: rotate(-2deg) translateY(-5px);
+	transform: rotate(-2deg) translateY(-5px);
+	*/
+}
+
+a:hover {
+	color: rgb(255, 0, 175);
 }
 
 .featured-page-image {
