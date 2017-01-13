@@ -1,5 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
+from itertools import chain
+from operator import attrgetter
+
 from django.db import models
 
 from modelcluster.fields import ParentalKey
@@ -15,6 +18,12 @@ from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 
 from wagtail.wagtailforms.models import AbstractEmailForm, AbstractFormField
 from wagtail.wagtailforms.edit_handlers import FormSubmissionsPanel
+
+
+# Page with a short decription and featured image
+# Used as base for any child page that we might was to search for
+class BasePage(Page):
+    pass
 
 
 # A relative link path (used for CSS and JS)
@@ -110,8 +119,6 @@ class GenericPage(Page):
 class PageWithSiblings(GenericPage):
     def get_context(self, request):
         context = super(GenericPage, self).get_context(request)
-        # Add extra variables and return the updated context
-        #context['children'] = IndexPage.objects.live().descendant_of(self)
         context["previous_page"] = self.get_prev_siblings().live().first()
         context["next_page"] = self.get_next_siblings().live().first()
         return context
@@ -122,8 +129,6 @@ class PageWithSiblings(GenericPage):
 class IntroductionPage(GenericPage):
     def get_context(self, request):
         context = super(IntroductionPage, self).get_context(request)
-        # Add extra variables and return the updated context
-        #context['children'] = IndexPage.objects.live().descendant_of(self)
         context['children'] = GenericPage.objects.child_of(self).live()
         context['introduction'] = context['children'].first()
         return context
@@ -157,11 +162,27 @@ class IndexPage(Page):
     def get_context(self, request):
         context = super(IndexPage, self).get_context(request)
 
-        # Add extra variables and return the updated context
-        all_children = GenericPage.objects.child_of(self).live().order_by('-date')
-        featured = all_children.exclude(short_description__exact='').exclude(short_description__isnull=True)
-        #context['index_children'] = IntroductionPage.objects.child_of(self).live()
-        context['children'] = all_children.exclude(pk__in=featured)
+        # Get children with different model types
+        generic_children = GenericPage.objects.child_of(self).live()
+        index_children = IndexPage.objects.child_of(self).live()
+
+        # Combine children of different types
+        all_children = list(chain(generic_children, index_children))
+
+        # Split into those with short descriptions
+        featured = []
+        not_featured = []
+
+        for child in all_children:
+            print child.short_description
+            if child.short_description:
+                featured.append(child)
+            else:
+                not_featured.append(child)
+
+        #context['children'] = sorted(not_featured, key=attrgetter('date'))
+        #context['featured'] = sorted(featured, key=attrgetter('date'))
+        context['children'] = not_featured
         context['featured'] = featured
 
         return context
