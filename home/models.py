@@ -20,12 +20,6 @@ from wagtail.wagtailforms.models import AbstractEmailForm, AbstractFormField
 from wagtail.wagtailforms.edit_handlers import FormSubmissionsPanel
 
 
-# Page with a short decription and featured image
-# Used as base for any child page that we might was to search for
-class BasePage(Page):
-    pass
-
-
 # A relative link path (used for CSS and JS)
 class LinkFragment(models.Model):
     path = models.CharField(max_length=255, help_text="Relative URL")
@@ -289,7 +283,7 @@ class HomePageTest2(Page):
         ('paragraph', blocks.RichTextBlock()),
         ('html', blocks.RawHTMLBlock()),
         ('image', ImageChooserBlock()),
-        ('featured_pages', blocks.ListBlock(blocks.PageChooserBlock(label="Featured page")))
+        ('featured_pages', blocks.ListBlock(blocks.PageChooserBlock(label="featured_page")))
     ])
 
     content_panels = Page.content_panels + [
