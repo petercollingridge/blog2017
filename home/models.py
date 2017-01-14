@@ -188,50 +188,18 @@ class IndexPage(Page):
         return context
 
 
-# A section of content, such as Tutorials to show on the home page
-class HomePageSection(models.Model):
-    title = models.CharField(max_length=255)
-    link_page = models.ForeignKey(
-        'wagtailcore.Page',
-        null=True,
-        blank=True,
-        related_name='+'
-    )
-    body = RichTextField(blank=True)
-
-    panels = [
-        FieldPanel('title'),
-        PageChooserPanel('link_page'),
-        FieldPanel('body'),
-    ]
-
-    class Meta:
-        abstract = True
-
-
-# Sections for the home page collected together in an orderable way
-class HomePageSections(Orderable, HomePageSection):
-    page = ParentalKey('HomePage', related_name='sections')
-
-
 class HomePage(Page):
-    introduction = RichTextField(blank=True)
+    body = StreamField([
+        ('heading', blocks.CharBlock(classname="full title")),
+        ('paragraph', blocks.RichTextBlock()),
+        ('html', blocks.RawHTMLBlock()),
+        ('image', ImageChooserBlock()),
+        ('featured_pages', blocks.ListBlock(blocks.PageChooserBlock(label="featured_page")))
+    ])
 
     content_panels = Page.content_panels + [
-        FieldPanel('introduction', classname="full"),
-        InlinePanel('sections', label="Sections"),
+        StreamFieldPanel('body'),
     ]
-
-    # Return sections to show on front page
-    def get_sections(self):
-        return IndexPage.objects.filter(path__startswith=self.path).order_by('path')
-
-    # Get a list of child pages which will be the main sections of the site
-    def get_context(self, request):
-        context = super(HomePage, self).get_context(request)
-        # Add extra variables and return the updated context
-        context['children'] = IndexPage.objects.child_of(self).live()
-        return context
 
 
 # SVG icon from font-awesome or elsewhere
@@ -279,19 +247,4 @@ class ContactPage(AbstractEmailForm):
             ]),
             FieldPanel('subject')
         ], "Email")
-    ]
-
-
-# Page for prototyping the homepage
-class HomePageTest2(Page):
-    body = StreamField([
-        ('heading', blocks.CharBlock(classname="full title")),
-        ('paragraph', blocks.RichTextBlock()),
-        ('html', blocks.RawHTMLBlock()),
-        ('image', ImageChooserBlock()),
-        ('featured_pages', blocks.ListBlock(blocks.PageChooserBlock(label="featured_page")))
-    ])
-
-    content_panels = Page.content_panels + [
-        StreamFieldPanel('body'),
     ]

@@ -1,34 +1,39 @@
 {% extends "base.html" %}
-{% load static wagtailuserbar %}
 
+{% load static wagtailuserbar %}
 {% load wagtailcore_tags %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% block heading %}{{ page.title }}{% endblock %}
+{% include_block page.body %}
+
+{% block body_class %}template-blogpage{% endblock %}
 
 {% block extra_css %}
 	<link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}">
 {% endblock %}
 
-{% block body_class %}template-homepage{% endblock %}
+    {% block content %}
 
-{% block content %}
-	{{ page.introduction|richtext }}
-
-	{% for section in page.get_sections %}
-		<h2>{{ section.title }}</h2>
-		<p>{{ section.introduction|richtext }}</p>
-
-		{% for content in section.get_featured_content %}
-			{% if content.main_image %}
-        		{% image content.main_image fill-300x200 %}
-    		{% endif %}
-			<div><a href="{{ section.slug }}/{{ content.link_page.slug }}">{{ content.title }}</a></div>
-		{% endfor %}
-
-		<p>
-			<a href="{{ section.slug }}">More {{ section.title }} <i class="fa fa-caret-right" aria-hidden="true"></i></a>
-		</p>
-	{% endfor %}
+    <article>
+        {% for block in page.body %}
+            <div class="row">
+                {% if block.block_type == 'heading' %}
+                    <h2>{{ block.value }}</h2>
+                {% elif block.block_type == 'featured_pages' %}
+                    <div class="row">
+						{% for child in block.value %}
+							{% include "home/includes/featured_page_link.html" with featured_page=child.specific %}
+						{% endfor %}
+					</div>
+                {% elif block.block_type == 'image' %}
+                    {% image block.value width-900 class="img-responsive" %}
+                {% else %}
+                    <section class="block_type-{{ block.block_type }}">
+                       {% include_block block %}
+                    </section>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </article>
 
 {% endblock %}
