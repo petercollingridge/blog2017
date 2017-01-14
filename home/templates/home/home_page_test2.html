@@ -22,30 +22,7 @@
                 {% elif block.block_type == 'featured_pages' %}
                     <div class="row">
 						{% for child in block.value %}
-							{% with child.specific as featured_page %}
-
-								<div class="col-sm-6 featured-page-container">
-									<div class="featured-page">
-										<a class="featured-page-link" href="{% slugurl child.slug %}">
-											{% if featured_page.featured_image %}
-												<div class="featured-page-image">
-													{% image featured_page.featured_image width-100 %}
-												</div>
-											{% endif %}
-
-											<div class="featured-page-text">
-												<div class="featured-page-title">{{ child.title }}</div>
-
-												{% if featured_page.short_description %}
-													<div class="featured-page-details">
-														{{ featured_page.short_description | richtext }}
-													</div>
-												{% endif %}
-											</div>
-										</a>
-									</div>
-								</div>
-							{% endwith %}
+							{% include "home/includes/featured_page_link.html" with featured_page=child.specific %}
 						{% endfor %}
 					</div>
                 {% elif block.block_type == 'image' %}

@@ -14,34 +14,13 @@
 	{% if featured %}
 		<div class="row">
 			{% for child in featured %}
-				<div class="col-sm-6 featured-page-container">
-					<div class="featured-page">
-						<a class="featured-page-link" href="{{ child.slug }}">
-							{% if child.featured_image %}
-								<div class="featured-page-image">
-									{% image child.featured_image width-100 %}
-								</div>
-							{% endif %}
-
-							<div class="featured-page-text">
-								<div class="featured-page-title">{{ child.title }}</div>
-								{% if child.short_description %}
-									<div class="featured-page-details">
-										{{ child.short_description | richtext }}
-									</div>
-								{% endif %}
-							</div>
-						</a>
-					</div>
-				</div>
+				{% include "home/includes/featured_page_link.html" with featured_page=child.specific %}
 			{% endfor %}
 		</div>
 	{% endif %}
 
 	{% if children %}
-		{% if featured %}
-		<h2>More</h2>
-		{% endif %}
+		{% if featured %}<h2>More</h2>{% endif %}
 
 		{% for child in children %}
 			<p><a href="{{ child.slug }}">{{ child.title }}<a/></p>
