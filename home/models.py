@@ -95,8 +95,14 @@ class GenericPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('date'),
-        InlinePanel('css_links', label="CSS links"),
-        InlinePanel('js_links', label="JS links"),
+        MultiFieldPanel(
+            [
+                InlinePanel('css_links', label="CSS links"),
+                InlinePanel('js_links', label="JS links"),
+            ],
+            heading="Additional resources",
+            classname="collapsible collapsed"
+        ),
         MultiFieldPanel(
             [
                 ImageChooserPanel('featured_image'),
