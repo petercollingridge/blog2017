@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags comments fluent_comments_tags %}
 
 {% include_block page.body %}
 
@@ -46,6 +46,13 @@
             </div>
         {% endfor %}
     </article>
+
+    <div>
+        {% render_comment_list for page %}
+         <div id="comments-form-wrapper">
+            {% render_comment_form for page %}
+        </div>
+    </div>
 
     {% block bottom-navigation %}{% endblock %}
 

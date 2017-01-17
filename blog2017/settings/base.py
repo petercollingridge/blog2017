@@ -18,6 +18,7 @@ import os
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
+SITE_ID = 1
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -44,6 +45,11 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
 
+    'fluent_comments',
+    'crispy_forms',
+    'django_comments',
+
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -132,6 +138,13 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+
+# Using Django-fluent-comment
+# https://github.com/django-fluent/django-fluent-comments
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+COMMENTS_APP = 'fluent_comments'
 
 # Wagtail settings
 

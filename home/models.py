@@ -1,11 +1,12 @@
 from __future__ import absolute_import, unicode_literals
 
 from itertools import chain
-from operator import attrgetter
 
 from django.db import models
 
 from modelcluster.fields import ParentalKey
+
+from fluent_comments.moderation import moderate_model, comments_are_open, comments_are_moderated
 
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore.models import Page, Orderable
@@ -248,3 +249,8 @@ class ContactPage(AbstractEmailForm):
             FieldPanel('subject')
         ], "Email")
     ]
+
+moderate_model(
+    GenericPage,
+    publication_date_field='date'
+)
