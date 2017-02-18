@@ -144,7 +144,11 @@ MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
+#FLUENT_COMMENTS_EXCLUDE_FIELDS = ('url')
 COMMENTS_APP = 'fluent_comments'
+
+FLUENT_COMMENTS_FORM_CLASS = 'fluent_comments.forms.CompactCommentForm'
+FLUENT_COMMENTS_EXCLUDE_FIELDS = ('url',)
 
 # Wagtail settings
 
