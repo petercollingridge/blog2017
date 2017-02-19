@@ -44,6 +44,7 @@ p {
 
 .main {
 	font-size: 20px;
+	margin: 0 15px 0 15px;
 	padding-bottom: 45px;
 }
 
@@ -85,12 +86,6 @@ p {
 article {
 	padding-top: 10px;
 	padding-bottom: 20px;
-}
-
-.row {
-/*	margin-left: 0;
-	margin-right: 0;
-	*/
 }
 
 .block_type-two_columns canvas {
