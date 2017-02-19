@@ -3,6 +3,10 @@ from django.utils.html import format_html, format_html_join
 
 from wagtail.wagtailcore import hooks
 from wagtail.wagtailcore.whitelist import attribute_rule, check_url, allow_without_attributes
+from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
+
+from fluent_comments.models import FluentComment
+from fluent_comments.compat import get_model as get_comments_model, BASE_APP
 
 # https://jossingram.wordpress.com/2014/07/24/add-some-blockquote-buttons-to-wagtail-cms-wysiwyg-editor/
 # http://docs.wagtail.io/en/v1.8/reference/hooks.html
@@ -43,3 +47,13 @@ def editor_js():
 @hooks.register('insert_editor_css')
 def editor_css():
     return format_html('<link rel="stylesheet" href="' + settings.STATIC_URL + '/css/font-awesome.min.css">')
+
+
+class CommentAdmin(ModelAdmin):
+    model = get_comments_model()
+    menu_label = 'Comments'
+    menu_icon = 'list-ul'
+    menu_order = 200
+    add_to_settings_menu = False
+
+modeladmin_register(CommentAdmin)
