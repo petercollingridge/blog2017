@@ -8,6 +8,7 @@
 
 {% if page.css_links.all %}
     {% block extra_css %}
+        <link rel="stylesheet" type="text/css" href="/static/css/ajaxcomments.css" />
         {% for link in page.css_links.all %}
             <link rel="stylesheet" type="text/css" href="/static/css/{{ link.path }}">
         {% endfor%}
@@ -15,6 +16,7 @@
 {% endif %}
 
 {% block extra_js %}
+<script type="text/javascript" src="/static/js/ajaxcomments.js"></script>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     {% if page.js_links.all %}
         {% for link in page.js_links.all %}
@@ -47,10 +49,22 @@
         {% endfor %}
     </article>
 
+    {% get_comment_count for page as comments_count %}
+
     <div>
-        <h2>Comments</h2>
-        {% render_comment_list for page %}
+        <div id="comments-wrapper">
+            {% if comments_count %}
+                <h2>Comments ({{ comments_count }})</h2>
+                <h3 class="has-comments-title"></h3>
+                    {% render_comment_list for page %}
+            {% else %}
+                    <h3 class="no-comments-title">Leave a reply</h3>
+                    {% render_comment_list for page %}
+            {% endif %}
+          </div>
+
          <div id="comments-form-wrapper">
+            <h2>Leave a comment</h2>
             {% render_comment_form for page %}
         </div>
     </div>

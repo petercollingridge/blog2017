@@ -143,12 +143,12 @@ MEDIA_URL = '/media/'
 # https://github.com/django-fluent/django-fluent-comments
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
-
-#FLUENT_COMMENTS_EXCLUDE_FIELDS = ('url')
 COMMENTS_APP = 'fluent_comments'
 
 FLUENT_COMMENTS_FORM_CLASS = 'fluent_comments.forms.CompactCommentForm'
-FLUENT_COMMENTS_EXCLUDE_FIELDS = ('url',)
+FLUENT_COMMENTS_EXCLUDE_FIELDS = ('url', 'email')
+FLUENT_COMMENTS_FIELD_ORDER = ('name', 'honeypot', 'comment')
+#FLUENT_COMMENTS_COMPACT_FIELDS = ('name', 'honeypot')
 
 # Wagtail settings
 
