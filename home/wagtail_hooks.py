@@ -8,6 +8,8 @@ from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
 from fluent_comments.models import FluentComment
 from fluent_comments.compat import get_model as get_comments_model, BASE_APP
 
+from .models import GenericPage
+
 # https://jossingram.wordpress.com/2014/07/24/add-some-blockquote-buttons-to-wagtail-cms-wysiwyg-editor/
 # http://docs.wagtail.io/en/v1.8/reference/hooks.html
 
@@ -50,10 +52,27 @@ def editor_css():
 
 
 class CommentAdmin(ModelAdmin):
-    model = get_comments_model()
-    menu_label = 'Comments'
+    model = FluentComment
+
+    print [f.name for f in model._meta.get_fields()]
+    print model.objects.all()
+
+    menu_label = 'Comments!'
     menu_icon = 'list-ul'
     menu_order = 200
     add_to_settings_menu = False
+    list_display = ('user_name', 'comment')
+
+
+class GenericAdmin(ModelAdmin):
+    model = GenericPage
+    menu_label = 'Posts'
+    menu_icon = 'doc-full'
+    menu_order = 300
+    add_to_settings_menu = False
+    list_display = ('date', 'short_description')
+    list_filter = ('date',)
+    search_fields = ('date',)
 
 modeladmin_register(CommentAdmin)
+modeladmin_register(GenericAdmin)
