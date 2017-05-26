@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.utils.html import format_html, format_html_join
 
+import django_comments
+
 from wagtail.wagtailcore import hooks
 from wagtail.wagtailcore.whitelist import attribute_rule, check_url, allow_without_attributes
 from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
@@ -52,27 +54,19 @@ def editor_css():
 
 
 class CommentAdmin(ModelAdmin):
-    model = FluentComment
+    model = django_comments.models.Comment
 
     print [f.name for f in model._meta.get_fields()]
-    print model.objects.all()
 
-    menu_label = 'Comments!'
+    menu_label = 'Comments'
     menu_icon = 'list-ul'
     menu_order = 200
     add_to_settings_menu = False
-    list_display = ('user_name', 'comment')
+    list_display = ('user_name', 'submit_date', 'show_page_link', 'comment')
 
+    def show_page_link(self, obj):
+        return format_html("<a href='{url}'>{name}</a>", url=obj.content_object.url, name=obj.content_object)
 
-class GenericAdmin(ModelAdmin):
-    model = GenericPage
-    menu_label = 'Posts'
-    menu_icon = 'doc-full'
-    menu_order = 300
-    add_to_settings_menu = False
-    list_display = ('date', 'short_description')
-    list_filter = ('date',)
-    search_fields = ('date',)
+    show_page_link.short_description = "Page"
 
 modeladmin_register(CommentAdmin)
-modeladmin_register(GenericAdmin)
