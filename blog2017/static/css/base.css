@@ -121,11 +121,12 @@ code.prettyprint {
 }
 
 .prettyprint li {
-	padding: 0.25em;
+	padding: 0.5em;
 }
 
 pre.prettyprint {
 	padding: 0 !important;
+	word-break: keep-all;
 }
 
 .kwd {
