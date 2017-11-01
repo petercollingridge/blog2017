@@ -6,18 +6,19 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Landing page for petercollingridge.co.uk">
+        <meta name="author" content="Peter Collingridge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
         <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
-        <meta name="description" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {# Global stylesheets #}
-        <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-        <!--<link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
-        <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:500|Josefin+Sans:400,600' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:500|Josefin+Sans:300,600' rel='stylesheet' type='text/css'>
 
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
@@ -28,48 +29,42 @@
         <div id="body">
             {% wagtailuserbar %}
 
-            <nav class="navbar navbar-inverse navbar-static-top">
-              <div class="container">
-                <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                  </button>
-                  <a href="/">
-                  <i class="navbar-brand fa fa-home fa-2x"></i>
-                </a>
-                </div>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
 
-                <div id="navbar" class="navbar-collapse collapse navbar-right">
-                  <ul class="nav navbar-nav">
-                    <li><a href="/tools">Tools</a></li>
-                    <li><a href="/tutorials">Tutorials</a></li>
-                    <li><a href="/articles">Articles</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                  </ul>
-                </div>
+              <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active"><a class="nav-link" href="#">
+                    <i class="navbar-brand fa fa-home"></i> <span class="sr-only">(current)</span>
+                  </a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">Tools</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">Tutorials</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">Articles</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">Contact Me</a></li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
               </div>
             </nav>
 
-            <div class="container-fluid main">
+            <main role="main" class="container">
                 <h1>{{ page.title }}</h1>
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        {% block content %}{% endblock %}
-                    </div>
-                </div>
-            </div>
+                    {% block content %}{% endblock %}
+            </main>
 
             <div class="footer"></div>
         </div>
 
         {# Global javascript #}
         <!-- Bootstrap core JavaScript -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js">
 
