@@ -76,6 +76,7 @@ class TwoColumnBlock(blocks.StructBlock):
 class GenericPage(Page):
     date = models.DateField("Post date", blank=True)
     short_description = RichTextField(blank=True)
+    github_link = models.URLField("Github link", blank=True)
 
     featured_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -90,7 +91,7 @@ class GenericPage(Page):
         ('paragraph', blocks.RichTextBlock()),
         ('html', blocks.RawHTMLBlock()),
         ('image', ImageChooserBlock()),
-        ('code', CodeBlock()),
+        ('code_block', CodeBlock()),
         ('two_columns', TwoColumnBlock()),
     ])
 
@@ -98,6 +99,7 @@ class GenericPage(Page):
         FieldPanel('date'),
         MultiFieldPanel(
             [
+                FieldPanel('github_link'),
                 InlinePanel('css_links', label="CSS links"),
                 InlinePanel('js_links', label="JS links"),
             ],

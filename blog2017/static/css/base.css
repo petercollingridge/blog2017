@@ -45,10 +45,11 @@ p {
 .container {
 	font-size: 20px;
 	padding-bottom: 45px;
+	position: relative;
 }
 
 .navbar {
-  background-color: #222;
+  background-color: #282828;
   font-size: 20px;
 }
 
@@ -61,15 +62,31 @@ p {
   margin-right: 5px;
 }
 
+.btn-outline {
+	color: #007bff;
+	background-color: #222;
+	border-color: #007bff;
+}
+
+.btn-outline:hover {
+	color: white;
+	background-color: #007bff;
+}
+
 #body {
 	min-height: 100%;
    	position: relative;
 }
 
+.content {
+	max-width: 800px;
+	margin:0 auto;"
+}
+
 .footer {
 	width: 100%;
 	height: 40px;
-	background-color: #222;
+	background-color: #282828;
 	position: absolute;
 	bottom: 0;
 }
@@ -77,20 +94,35 @@ p {
 .info-header {
 	width: 100%;
 	height: 40px;
+	position: relative;
 }
 
 .info-header i {
 	vertical-align: middle;
+	height: 1.5em;
 }
 
 .date {
+	font-weight: bold;
+}
+
+.github-link {
 	position: absolute;
 	right: 0;
+	top: 0;
+}
+
+.github-link i {
+	font-size: 1.5em;
 }
 
 article {
 	padding-top: 10px;
 	padding-bottom: 20px;
+}
+
+section {
+	width: 100%;
 }
 
 .block_type-two_columns canvas {

@@ -30,7 +30,16 @@
     {% block top-navigation %}{% endblock %}
 
     <article>
-        <div class="date">{{ page.date }}</div>
+        <div class="info-header">
+            <span class="date">{{ page.date }}</span>
+            {% if page.github_link %}
+            <span class="github-link">
+                <a href="{{ page.github_link }}">
+                    <i class="fa fa-github"></i> <span>Code on Github</span>
+                </a>
+            </span>
+            {% endif %}
+        </div>
 
         {% for block in page.body %}
             <div class="row">

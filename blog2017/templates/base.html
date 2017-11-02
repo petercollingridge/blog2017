@@ -36,25 +36,25 @@
 
               <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
-                  <li class="nav-item active"><a class="nav-link" href="#">
+                  <li class="nav-item active"><a class="nav-link" href="/">
                     <i class="navbar-brand fa fa-home"></i> <span class="sr-only">(current)</span>
                   </a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">Tools</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">Tutorials</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">Articles</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">Contact Me</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/tools">Tools</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/tutorials">Tutorials</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/articles">Articles</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/contact-me">Contact Me</a></li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                   <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  <button class="btn btn-outline my-2 my-sm-0" type="submit">Search</button>
                 </form>
               </div>
             </nav>
 
             <main role="main" class="container">
-                <h1>{{ page.title }}</h1>
-                    {% block content %}{% endblock %}
+              <h1>{{ page.title }}</h1>
+              <div class="content">{% block content %}{% endblock %}</div>
             </main>
 
             <div class="footer"></div>
