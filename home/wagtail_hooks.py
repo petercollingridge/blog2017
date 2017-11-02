@@ -56,8 +56,6 @@ def editor_css():
 class CommentAdmin(ModelAdmin):
     model = django_comments.models.Comment
 
-    print [f.name for f in model._meta.get_fields()]
-
     menu_label = 'Comments'
     menu_icon = 'list-ul'
     menu_order = 200
