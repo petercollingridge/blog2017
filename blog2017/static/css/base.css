@@ -20,9 +20,11 @@ h1 {
 h2 {
 	color: white;
 	background-color: #333;
+	font-size: 1.5em;
 	padding-top: 8px;
 	padding-left: 8px;
 	margin: 10px -10px;
+	width: 100%;
 }
 
 h4 {
@@ -43,7 +45,8 @@ p {
 }
 
 .container {
-	font-size: 20px;
+	font-size: 18px;
+	line-height: 25px;
 	padding-bottom: 45px;
 	position: relative;
 }
@@ -80,7 +83,7 @@ p {
 
 .content {
 	max-width: 800px;
-	margin:0 auto;"
+	margin: 0 auto;
 }
 
 .footer {
@@ -151,9 +154,10 @@ li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
 	list-style-type: decimal !important;
 }
 
-code.prettyprint {
+pre.prettyprint {
 	background-color: rgb(245, 245, 245);
 	font-size: 13px;
+	line-height: normal;
 	padding: 5px;
 }
 
@@ -184,6 +188,7 @@ pre.prettyprint {
 }
 
 .parent-page-link {
+	width: 100%;
 	text-align: center;
 }
 

@@ -12,28 +12,26 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}">
 {% endblock %}
 
-    {% block content %}
+	{% block content %}
 
-    <article>
-        {% for block in page.body %}
-            <div class="row">
-                {% if block.block_type == 'heading' %}
-                    <h2>{{ block.value }}</h2>
-                {% elif block.block_type == 'featured_pages' %}
-                    <div class="row">
-						{% for child in block.value %}
-							{% include "home/includes/featured_page_link.html" with featured_page=child.specific %}
-						{% endfor %}
-					</div>
-                {% elif block.block_type == 'image' %}
-                    {% image block.value width-900 class="img-responsive" %}
-                {% else %}
-                    <section class="block_type-{{ block.block_type }}">
-                       {% include_block block %}
-                    </section>
-                {% endif %}
-            </div>
-        {% endfor %}
-    </article>
+	<article>
+		{% for block in page.body %}
+			{% if block.block_type == 'heading' %}
+				<h2>{{ block.value }}</h2>
+			{% elif block.block_type == 'featured_pages' %}
+				<div class="row">
+					{% for child in block.value %}
+						{% include "home/includes/featured_page_link.html" with featured_page=child.specific %}
+					{% endfor %}
+				</div>
+			{% elif block.block_type == 'image' %}
+				{% image block.value width-900 class="img-responsive" %}
+			{% else %}
+				<section class="block_type-{{ block.block_type }}">
+				   {% include_block block %}
+				</section>
+			{% endif %}
+		{% endfor %}
+	</article>
 
 {% endblock %}
