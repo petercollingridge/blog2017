@@ -57,25 +57,27 @@
 
         {% for block in page.body %}
             {% if block != page.body.0 %}
-                <div class="row">
-                    {% if block.block_type == 'heading' %}
-                        <h2>{{ block.value }}</h2>
-                    {% elif block.block_type == 'image' %}
-                        {% image block.value width-900 class="img-responsive" %}
-                    {% elif block.block_type == 'code' or block.block_type == 'two_columns' %}
-                        {% include_block block %}
-                    {% else %}
-                        <section class="block_type-{{ block.block_type }}">
-                           {% include_block block %}
-                        </section>
-                    {% endif %}
-                </div>
+                {% if block.block_type == 'heading' %}
+                    <h2>{{ block.value }}</h2>
+                {% else %}
+                    <div class="row">
+                        {% if block.block_type == 'image' %}
+                            {% image block.value width-900 class="img-responsive" %}
+                        {% elif block.block_type == 'code' or block.block_type == 'two_columns' %}
+                            {% include_block block %}
+                        {% else %}
+                            <section class="block_type-{{ block.block_type }}">
+                               {% include_block block %}
+                            </section>
+                        {% endif %}
+                    </div>
+                {% endif %}
             {% endif %}
         {% endfor %}
     </article>
 
     <div class="row">
-        <div class="col-xs-12 parent-page-link">
+        <div class="col-12 parent-page-link">
             <a href="{{ page.get_parent.url }}">Back to {{ page.get_parent }}</a>
         </div>
     </div>
