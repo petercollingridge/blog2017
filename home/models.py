@@ -5,12 +5,16 @@ from itertools import chain
 from django.db import models
 
 from modelcluster.fields import ParentalKey
+from modelcluster.contrib.taggit import ClusterTaggableManager
+from taggit.models import TaggedItemBase
 
-from fluent_comments.moderation import moderate_model, comments_are_open, comments_are_moderated
+from fluent_comments.moderation import moderate_model
 
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField, StreamField
+
+from wagtail.wagtailsearch import index
 
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, FieldRowPanel, StreamFieldPanel, InlinePanel, PageChooserPanel, MultiFieldPanel
 
@@ -71,12 +75,21 @@ class TwoColumnBlock(blocks.StructBlock):
         template = 'home/blocks/two_column_block.html'
 
 
-# GenericPage uses a Streamfield with a raw HTML block so is relatively flexible
-# Used for leaf nodes where we don't want to show links to siblings, such as tool pages
+class GenericPageTag(TaggedItemBase):
+    content_object = ParentalKey('GenericPage', related_name='tagged_items')
+
+
 class GenericPage(Page):
+    """
+    GenericPage uses a Streamfield with a raw HTML block so is flexible.
+    Used for leaf nodes where we don't want to show links to siblings,
+    such as tool pages and standalone articles.
+    """
+
     date = models.DateField("Post date", blank=True)
     short_description = RichTextField(blank=True)
     github_link = models.URLField("Github link", blank=True)
+    tags = ClusterTaggableManager(through=GenericPageTag, blank=True)
 
     featured_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -94,6 +107,12 @@ class GenericPage(Page):
         ('code_block', CodeBlock()),
         ('two_columns', TwoColumnBlock()),
     ])
+
+    # Inherit search_fields from Page and add more
+    search_fields = Page.search_fields + [
+        index.SearchField('short_description', boost="1.5"),
+        index.SearchField('body'),
+    ]
 
     content_panels = Page.content_panels + [
         FieldPanel('date'),
@@ -116,6 +135,8 @@ class GenericPage(Page):
         ),
         StreamFieldPanel('body'),
     ]
+
+    promote_panels = Page.promote_panels + [FieldPanel('tags')]
 
 
 # A GenericPage with links to previous and next pages
