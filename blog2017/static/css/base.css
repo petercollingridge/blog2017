@@ -248,3 +248,7 @@ a:hover {
 .featured-page:hover .featured-page-title{
 	text-decoration: underline;
 }
+
+.search-result-heading {
+	font-weight: bold;
+}
