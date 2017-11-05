@@ -152,7 +152,15 @@ FLUENT_COMMENTS_EXCLUDE_FIELDS = ('url', 'email')
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "blog2017"
+WAGTAIL_SITE_NAME = 'blog2017'
+
+# Elasticsearch http://docs.wagtail.io/en/v1.9/advanced_topics/performance.html
+#WAGTAILSEARCH_BACKENDS = {
+#    'default': {
+#        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
+#        'INDEX': 'blog2017',
+#    },
+#}
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
