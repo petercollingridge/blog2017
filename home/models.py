@@ -3,10 +3,13 @@ from __future__ import absolute_import, unicode_literals
 from itertools import chain
 
 from django.db import models
+from django.shortcuts import render
 
 from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
+
 from taggit.models import TaggedItemBase
+from taggit.models import Tag
 
 from fluent_comments.moderation import moderate_model
 
@@ -272,6 +275,22 @@ class ContactPage(AbstractEmailForm):
             FieldPanel('subject')
         ], "Email")
     ]
+
+
+class TagPage(Page):
+    def serve(self, request):
+        # Filter by tag
+        tag = request.GET.get('tag')
+        data = {}
+
+        if tag:
+            data['tag'] = tag
+            data['pages'] = GenericPage.objects.live().filter(tags__name=tag)
+        else:
+            data['tags'] = Tag.objects.all
+
+        return render(request, self.template, data)
+
 
 moderate_model(
     GenericPage,

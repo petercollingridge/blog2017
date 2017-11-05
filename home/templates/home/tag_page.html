@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static wagtailuserbar %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+{% include_block page.body %}
+
+{% block heading %}{{ page.title }}{% endblock %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+    {% if tag %}
+        <h1>Tag: {{ tag }}</h1>
+        <p>Pages tagged with {{ tag}}</p>
+        <ul>
+            {% for page in pages %}
+                <li><a href="{{ page.full_url }}">{{ page.title }}<a/></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h1>Tags</h1>
+        {% for tag in tags %}
+            <a href="/tags?tag={{ tag }}"><span class="page-tag">{{ tag }}</span></a>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}

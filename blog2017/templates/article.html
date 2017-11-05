@@ -77,6 +77,13 @@
         </div>
     </div>
 
+    {% if page.tags.all %}
+        <h2>Tags</h2>
+        {% for tag in page.tags.all %}
+            <a href="/tags?tag={{ tag }}"><span class="page-tag">{{ tag }}</span></a>
+        {% endfor %}
+    {% endif %}
+
     {% block bottom-navigation %}{% endblock %}
 
 {% endblock %}

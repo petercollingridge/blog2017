@@ -252,3 +252,24 @@ a:hover {
 .search-result-heading {
 	font-weight: bold;
 }
+
+.page-tag {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 17px;
+    line-height: 21px;
+    background-color: #686868;
+    color: #f8f8f8;
+    padding: 3px 6px 1px 6px;
+    margin-right: 5px;
+    margin-bottom: 4px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 16px;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.page-tag:hover, .page-tag.selected {
+    background-color: #ec008c;
+    cursor: pointer;
+}
