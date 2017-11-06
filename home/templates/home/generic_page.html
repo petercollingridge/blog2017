@@ -1,17 +1,9 @@
 {% extends "article.html" %}
 
 {% block top-navigation %}
-    <div class="row">
-        <div class="col-12 parent-page-link">
-            <a href="{{ page.get_parent.url }}">Back to {{ page.get_parent }}</a>
-        </div>
-    </div>
+    {% include "home/includes/sibling_navigation.html" %}
 {% endblock %}
 
 {% block bottom-navigation %}
-    <div class="row">
-        <div class="col-12 parent-page-link">
-            <a href="{{ page.get_parent.url }}">Back to {{ page.get_parent }}</a>
-        </div>
-    </div>
+    {% include "home/includes/sibling_navigation.html" %}
 {% endblock %}

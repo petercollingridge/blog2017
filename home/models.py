@@ -92,6 +92,7 @@ class GenericPage(Page):
     date = models.DateField("Post date", blank=True)
     short_description = RichTextField(blank=True)
     github_link = models.URLField("Github link", blank=True)
+    show_siblings = models.BooleanField(default=False)
     tags = ClusterTaggableManager(through=GenericPageTag, blank=True)
 
     featured_image = models.ForeignKey(
@@ -119,6 +120,7 @@ class GenericPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('date'),
+        FieldPanel('show_siblings'),
         MultiFieldPanel(
             [
                 FieldPanel('github_link'),
@@ -141,13 +143,11 @@ class GenericPage(Page):
 
     promote_panels = Page.promote_panels + [FieldPanel('tags')]
 
-
-# A GenericPage with links to previous and next pages
-class PageWithSiblings(GenericPage):
     def get_context(self, request):
         context = super(GenericPage, self).get_context(request)
-        context["previous_page"] = self.get_prev_siblings().live().first()
-        context["next_page"] = self.get_next_siblings().live().first()
+        if self.show_siblings:
+            context["previous_page"] = self.get_prev_siblings().live().first()
+            context["next_page"] = self.get_next_siblings().live().first()
         return context
 
 
