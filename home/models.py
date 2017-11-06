@@ -201,7 +201,6 @@ class IndexPage(Page):
         not_featured = []
 
         for child in all_children:
-            print child.short_description
             if child.short_description:
                 featured.append(child)
             else:
