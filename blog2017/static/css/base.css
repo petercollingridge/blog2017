@@ -134,6 +134,7 @@ section {
 
 .img-responsive {
 	margin: 0 auto;
+	display: block;
 }
 
 .comment-item {

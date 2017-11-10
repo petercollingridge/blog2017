@@ -58,6 +58,9 @@ class CodeBlock(blocks.StructBlock):
 
 # https://jossingram.wordpress.com/2015/07/30/some-wagtail-v1-streamfield-examples/
 class TwoColumnBlock(blocks.StructBlock):
+    # Value between 1 and 11
+    left_side_size = blocks.IntegerBlock(default=7)
+
     left_column = blocks.StreamBlock([
         ('paragraph', blocks.RichTextBlock()),
         ('html', blocks.RawHTMLBlock()),
@@ -71,6 +74,11 @@ class TwoColumnBlock(blocks.StructBlock):
         ('image', ImageChooserBlock()),
         ('code', CodeBlock()),
     ], icon='arrow-right', label='Right column content')
+
+    def get_context(self, value):
+        value['right_side_size'] = 12 - value['left_side_size']
+        context = super(TwoColumnBlock, self).get_context(value)
+        return context
 
     class Meta:
         icon = 'placeholder'

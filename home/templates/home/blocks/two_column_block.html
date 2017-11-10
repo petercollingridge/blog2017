@@ -1,6 +1,6 @@
-<div class="col-md-8 col-sm-7">
+<div class="col-md-{{self.left_side_size}}">
     {% include "home/includes/streamfield_blocks.html" with blocks=self.left_column only %}
 </div>
-<div class="col-md-4 col-sm-5">
+<div class="col-md-{{self.right_side_size}}">
     {% include "home/includes/streamfield_blocks.html" with blocks=self.right_column only %}
 </div>
