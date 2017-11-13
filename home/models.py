@@ -75,7 +75,7 @@ class TwoColumnBlock(blocks.StructBlock):
         ('code', CodeBlock()),
     ], icon='arrow-right', label='Right column content')
 
-    def get_context(self, value):
+    def get_context(self, value, parent_context=None):
         value['right_side_size'] = 12 - value['left_side_size']
         context = super(TwoColumnBlock, self).get_context(value)
         return context
