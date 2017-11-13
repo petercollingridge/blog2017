@@ -21,9 +21,18 @@
 			{% elif block.block_type == 'featured_pages' %}
 				<div class="row">
 					{% for child in block.value %}
-						{% include "home/includes/featured_page_link.html" with featured_page=child.specific %}
+						{% if child.specific.featured_image %}
+							{% include "home/includes/featured_page_link.html" with featured_page=child.specific %}
+						{% endif %}
 					{% endfor %}
 				</div>
+				{% for child in block.value %}
+					{% if not child.featured_image %}
+						<div class="row">
+							<a class="featured-page-link" href="{{ child.url }}">{{ child.title }}
+						</div>
+					{% endif %}
+				{% endfor %}
 			{% elif block.block_type == 'image' %}
 				{% image block.value width-900 class="img-responsive" %}
 			{% else %}
