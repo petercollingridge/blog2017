@@ -56,7 +56,7 @@
         </div>
 
         {% for block in page.body %}
-            {% if block != page.body.0 %}
+            {% if block != page.body.0 %}   {# First block is the introduction, so don't repeat it #}
                 {% if block.block_type == 'heading' %}
                     <h2>{{ block.value }}</h2>
                 {% else %}
