@@ -27,7 +27,7 @@
 					{% endfor %}
 				</div>
 				{% for child in block.value %}
-					{% if not child.featured_image %}
+					{% if not child.specific.featured_image %}
 						<div class="row">
 							<a class="featured-page-link" href="{{ child.url }}">{{ child.title }}
 						</div>
