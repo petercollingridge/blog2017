@@ -28,7 +28,7 @@
 				</div>
 				{% for child in block.value %}
 					{% if not child.specific.featured_image %}
-						<div class="row">
+						<div>
 							<a class="featured-page-link" href="{{ child.url }}">{{ child.title }}</a>
 						</div>
 					{% endif %}
@@ -41,6 +41,21 @@
 				</section>
 			{% endif %}
 		{% endfor %}
+
+		<h2>Latest</h2>
+		<div class="row">
+			{% for latest_page in page.latest %}
+				<div class="col-md-4 featured-page-text">
+					<a class="featured-page-link featured-page-title" href="{{ latest_page.url }}">
+						{{ latest_page.title }}
+					</a>
+					<div>{{ latest_page.date }}</div>
+					<div class="featured-page-details">
+						{{ latest_page.short_description | richtext }}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
 	</article>
 
 {% endblock %}

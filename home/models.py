@@ -235,6 +235,12 @@ class HomePage(Page):
         StreamFieldPanel('body'),
     ]
 
+    def latest(self):
+        pages = GenericPage.objects.all().live()
+        pages = pages.order_by('-date')[:3]
+        print(pages)
+        return pages
+
 
 # SVG icon from font-awesome or elsewhere
 class IconBlock(blocks.StructBlock):
