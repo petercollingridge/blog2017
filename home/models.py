@@ -222,13 +222,24 @@ class IndexPage(Page):
         return context
 
 
+# A section block for the home page, showing featured Tool, Tutorials etc.
+class SectionBlock(blocks.StructBlock):
+    section = blocks.PageChooserBlock(label="section_index")
+    featured_pages = blocks.ListBlock(blocks.PageChooserBlock(label="featured_page"))
+
+    class Meta:
+        icon = 'pick'
+        label = 'Featured section'
+        template = 'home/blocks/section_block.html'
+
+
 class HomePage(Page):
     body = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
         ('html', blocks.RawHTMLBlock()),
         ('image', ImageChooserBlock()),
-        ('featured_pages', blocks.ListBlock(blocks.PageChooserBlock(label="featured_page")))
+        ('section_block', SectionBlock())
     ])
 
     content_panels = Page.content_panels + [
@@ -238,7 +249,6 @@ class HomePage(Page):
     def latest(self):
         pages = GenericPage.objects.all().live()
         pages = pages.order_by('-date')[:3]
-        print(pages)
         return pages
 
 
