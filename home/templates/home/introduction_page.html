@@ -46,32 +46,28 @@
                     {% endfor %}
                 </ol>
             </div>
-            <div class="col-sm-7">
-                {% if page.body %}
-                    {% with introduction=page.body.0 %}
-                        {{ introduction.value }}
-                    {% endwith %}
-                {% endif %}
-            </div>
+            {% if page.introduction %}
+                <div class="col-sm-7">
+                    {{ page.introduction | richtext }}
+                </div>
+            {% endif %}
         </div>
 
         {% for block in page.body %}
-            {% if block != page.body.0 %}   {# First block is the introduction, so don't repeat it #}
-                {% if block.block_type == 'heading' %}
-                    <h2>{{ block.value }}</h2>
-                {% else %}
-                    <div class="row">
-                        {% if block.block_type == 'image' %}
-                            {% image block.value width-900 class="img-responsive" %}
-                        {% elif block.block_type == 'code' or block.block_type == 'two_columns' %}
-                            {% include_block block %}
-                        {% else %}
-                            <section class="block_type-{{ block.block_type }}">
-                               {% include_block block %}
-                            </section>
-                        {% endif %}
-                    </div>
-                {% endif %}
+            {% if block.block_type == 'heading' %}
+                <h2>{{ block.value }}</h2>
+            {% else %}
+                <div class="row">
+                    {% if block.block_type == 'image' %}
+                        {% image block.value width-900 class="img-responsive" %}
+                    {% elif block.block_type == 'code' or block.block_type == 'two_columns' %}
+                        {% include_block block %}
+                    {% else %}
+                        <section class="block_type-{{ block.block_type }}">
+                           {% include_block block %}
+                        </section>
+                    {% endif %}
+                </div>
             {% endif %}
         {% endfor %}
     </article>

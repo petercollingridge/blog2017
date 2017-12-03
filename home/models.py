@@ -19,7 +19,7 @@ from wagtail.wagtailcore.fields import RichTextField, StreamField
 
 from wagtail.wagtailsearch import index
 
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, FieldRowPanel, StreamFieldPanel, InlinePanel, PageChooserPanel, MultiFieldPanel
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, FieldRowPanel, StreamFieldPanel, InlinePanel, MultiFieldPanel
 
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
@@ -162,6 +162,10 @@ class GenericPage(Page):
 # Generic page, but showing list of child pages
 # Used as the first page for tutorials and articles
 class IntroductionPage(GenericPage):
+    introduction = RichTextField("Introduction text", blank=True)
+
+    content_panels = GenericPage.content_panels[:5] + [FieldPanel('introduction')] + GenericPage.content_panels[5:]
+
     def get_context(self, request):
         context = super(IntroductionPage, self).get_context(request)
         context['children'] = GenericPage.objects.child_of(self).live()
@@ -214,8 +218,8 @@ class IndexPage(Page):
             else:
                 not_featured.append(child)
 
-        #context['children'] = sorted(not_featured, key=attrgetter('date'))
-        #context['featured'] = sorted(featured, key=attrgetter('date'))
+        # context['children'] = sorted(not_featured, key=attrgetter('date'))
+        # context['featured'] = sorted(featured, key=attrgetter('date'))
         context['children'] = not_featured
         context['featured'] = featured
 
