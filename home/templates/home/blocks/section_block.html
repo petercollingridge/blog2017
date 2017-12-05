@@ -1,0 +1,13 @@
+{% load wagtailcore_tags %}
+
+<h2><a class="section-heading" href="{{ value.section.url }}">{{ value.section.title }}</a></h2>
+{{ value.section.specific.introduction | richtext }}
+{{ value.section.specific.short_description | richtext }}
+<div class="row">
+	{% for featured_page in value.featured_pages %}
+		{% if featured_page.specific.featured_image %}
+			{% include "home/includes/featured_page_link.html" with featured_page=featured_page.specific %}
+		{% endif %}
+	{% endfor %}
+</div>
+<p class="section-more-link"><a href="{{ value.section.url }}">More {{ value.section.title }} here &raquo;</a></p>
