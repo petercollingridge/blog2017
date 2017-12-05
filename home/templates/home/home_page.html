@@ -12,35 +12,9 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}">
 {% endblock %}
 
-	{% block content %}
-
+{% block content %}
 	<article>
-		{% for block in page.body %}
-			{% if block.block_type == 'heading' %}
-				<h2>{{ block.value }}</h2>
-			{% elif block.block_type == 'featured_pages' %}
-				<div class="row">
-					{% for child in block.value %}
-						{% if child.specific.featured_image %}
-							{% include "home/includes/featured_page_link.html" with featured_page=child.specific %}
-						{% endif %}
-					{% endfor %}
-				</div>
-				{% for child in block.value %}
-					{% if not child.specific.featured_image %}
-						<div>
-							<a class="featured-page-link" href="{{ child.url }}">{{ child.title }}</a>
-						</div>
-					{% endif %}
-				{% endfor %}
-			{% elif block.block_type == 'image' %}
-				{% image block.value width-900 class="img-responsive" %}
-			{% else %}
-				<section class="block_type-{{ block.block_type }}">
-				   {% include_block block %}
-				</section>
-			{% endif %}
-		{% endfor %}
+		{% include "home/includes/streamfield_blocks.html" with blocks=page.body %}
 
 		<h2>Latest</h2>
 		<div class="row">

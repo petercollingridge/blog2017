@@ -3,15 +3,21 @@
 {% if blocks %}
     {% for block in blocks %}
         {% if block.block_type == 'heading' %}
-            <h1>{{ block.value }}</h1>
-        {% elif block.block_type == 'image' %}
-            {% image block.value width-300 class="img-responsive" %}
-        {% elif block.block_type == 'code' %}
+            <h2>{{ block.value }}</h2>
+        {% elif block.block_type == 'icon_block' %}
             {% include_block block %}
         {% else %}
-            <section class="block-{{ block.block_type }}">
-               {{ block }}
-            </section>
+            <div class="row">
+            {% if block.block_type == 'image' %}
+                {% image block.value width-900 class="img-responsive" %}
+            {% elif block.block_type == 'code' or block.block_type == 'two_columns' %}
+                {% include_block block %}
+            {% else %}
+                <section class="block-{{ block.block_type }}">
+                   {{ block }}
+                </section>
+            {% endif %}
+            </div>
         {% endif %}
     {% endfor %}
 {% endif %}
