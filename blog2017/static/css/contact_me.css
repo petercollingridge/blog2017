@@ -14,6 +14,7 @@
 .contact-form input {
 	background-color: #f4f4f4;
     width: 480px;
+    padding: 3px 8px;
 }
 
 .contact-form input:focus {
@@ -27,4 +28,5 @@
 .contact-form textarea { 
     width: 480px;
     height: 180px;
+    padding: 3px 8px;
 }
