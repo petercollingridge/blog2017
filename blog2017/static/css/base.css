@@ -169,25 +169,26 @@ section {
 	margin-bottom: 30px;
 }
 
-/* Ensure line numbers on every line of code blocks */
-li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
-	list-style-type: decimal !important;
-}
-
 pre.prettyprint {
-	background-color: rgb(245, 245, 245);
+	width: 100%;
 	font-size: 13px;
-	line-height: normal;
-	padding: 5px;
+	line-height: 0.9em;
+	word-break: keep-all;
+	/* Overwriting default border style */
+	padding: 0 !important;
+	border: 1px solid #aaa !important;
+	border-left: none !important;
+	border-right: none !important;
 }
 
 .prettyprint li {
 	padding: 0.5em;
+	background-color: rgb(245, 245, 245);
 }
 
-pre.prettyprint {
-	padding: 0 !important;
-	word-break: keep-all;
+/* Ensure line numbers on every line of code blocks */
+li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+	list-style-type: decimal !important;
 }
 
 .kwd {
