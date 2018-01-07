@@ -143,8 +143,9 @@ article {
 	padding-bottom: 20px;
 }
 
-section {
-	width: 100%;
+.two-col-block .row {
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .block_type-two_columns canvas {
