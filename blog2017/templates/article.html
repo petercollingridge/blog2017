@@ -16,13 +16,11 @@
 {% endif %}
 
 {% block extra_js %}
-<script type="text/javascript" src="/static/js/ajaxcomments.js"></script>
+    <script type="text/javascript" src="/static/js/ajaxcomments.js"></script>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    {% if page.js_links.all %}
-        {% for link in page.js_links.all %}
-            <script type="text/javascript" src="/static/js/{{ link.path }}"></script>
-        {% endfor%}
-    {% endif %}
+    {% for link in js_links %}
+        <script type="text/javascript" src="{{ link }}"></script>
+    {% endfor%}
 {% endblock %}
 
     {% block content %}
