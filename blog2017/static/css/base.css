@@ -173,8 +173,8 @@ article {
 pre.prettyprint {
 	width: 100%;
 	font-size: 13px;
-	line-height: 0.9em;
-	word-break: keep-all;
+	line-height: 1.2em;
+	white-space: pre-wrap;
 	/* Overwriting default border style */
 	padding: 0 !important;
 	border: 1px solid #aaa !important;
@@ -183,7 +183,7 @@ pre.prettyprint {
 }
 
 .prettyprint li {
-	padding: 0.5em;
+	padding: 0.4em;
 	background-color: rgb(245, 245, 245);
 }
 
@@ -246,6 +246,11 @@ li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
 
 a:hover {
 	color: rgb(255, 0, 175);
+}
+
+.rich-text ul {
+	margin-top: -25px;
+	margin-bottom: -20px;
 }
 
 .featured-page-image {
