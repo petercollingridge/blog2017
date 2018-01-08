@@ -13,7 +13,9 @@
             {% elif block.block_type == 'code' or block.block_type == 'two_columns' %}
                 {% include_block block %}
             {% else %}
-                {{ block }}
+                <section class="block-{{ block.block_type }}">
+                    {{ block }}
+                </section>
             {% endif %}
             </div>
         {% endif %}
