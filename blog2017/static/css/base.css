@@ -14,7 +14,6 @@ h1 {
 	font-weight: 700;
 	font-size: 3.2em;
 	margin-top: 0;
-	margin-bottom: 15px;
 }
 
 h2 {
@@ -22,8 +21,13 @@ h2 {
 	background-color: #333;
 	font-size: 1.5em;
 	padding-top: 8px;
-	padding-left: 20px;
+	padding-left: 14px;
 	margin: 10px -25px;
+}
+
+h3 {
+	font-size: 1.2rem;
+	font-weight: 600;
 }
 
 h4 {
@@ -36,11 +40,21 @@ h4 .comment-date {
 
 h5 {
 	text-align: center;
-	font-size: 0.75em;
+	font-size: 0.8em;
 }
 
 p {
-	padding-bottom: 10px;
+	padding-top: 4px;
+	margin-bottom: 0.5rem;
+}
+
+article {
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+
+section {
+	padding: 0 5px;
 }
 
 .container {
@@ -138,11 +152,6 @@ p {
 	font-size: 1.5em;
 }
 
-article {
-	padding-top: 10px;
-	padding-bottom: 20px;
-}
-
 .two-col-block .row {
 	padding-left: 5px;
 	padding-right: 5px;
@@ -194,6 +203,12 @@ li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
 
 .kwd {
 	font-weight: bold;
+}
+
+.equation {
+	font-size: 1.25rem;
+	padding-left: 20px;
+	margin-bottom: 12px;
 }
 
 .navigation-name {
@@ -249,8 +264,7 @@ a:hover {
 }
 
 .rich-text ul {
-	margin-top: -25px;
-	margin-bottom: -20px;
+	margin-top: -5px;
 }
 
 .featured-page-image {
