@@ -162,7 +162,6 @@ class GenericPage(Page):
         if self.js_links:
             for link in self.js_links.all():
                 if link.path.startswith('http'):
-                    print(link.path)
                     context["js_links"].append(link.path)
                 else:
                     context["js_links"].append("/static/js/{}".format(link.path))
