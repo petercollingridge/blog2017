@@ -20,13 +20,16 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     {% for link in js_links %}
         <script type="text/javascript" src="{{ link }}"></script>
-    {% endfor%}
+    {% endfor %}
+
+    {% if page.extra_js_code %}
+        <script>{{ page.extra_js_code|safe }}</script>
+    {% endif %}
 {% endblock %}
 
     {% block content %}
 
     {% block top-navigation %}{% endblock %}
-
     <article>
         <div class="info-header">
             <span class="date">{{ page.date }}</span>

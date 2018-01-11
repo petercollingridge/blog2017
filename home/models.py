@@ -100,6 +100,7 @@ class GenericPage(Page):
     date = models.DateField("Post date", blank=True)
     short_description = RichTextField(blank=True)
     github_link = models.URLField("Github link", blank=True)
+    extra_js_code = models.TextField("Additional JS code", blank=True)
     show_siblings = models.BooleanField(default=False)
     tags = ClusterTaggableManager(through=GenericPageTag, blank=True)
 
@@ -134,6 +135,7 @@ class GenericPage(Page):
                 FieldPanel('github_link'),
                 InlinePanel('css_links', label="CSS links"),
                 InlinePanel('js_links', label="JS links"),
+                FieldPanel('extra_js_code'),
             ],
             heading="Additional resources",
             classname="collapsible collapsed"
