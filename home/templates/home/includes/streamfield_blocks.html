@@ -9,7 +9,7 @@
         {% else %}
             <div class="row">
             {% if block.block_type == 'image' %}
-                {% image block.value width-900 class="img-responsive" %}
+                {% image block.value width-300 class="img-responsive" %}
             {% elif block.block_type == 'code' or block.block_type == 'two_columns' %}
                 {% include_block block %}
             {% else %}
