@@ -158,16 +158,6 @@ class GenericPage(Page):
         if self.show_siblings:
             context["previous_page"] = self.get_prev_siblings().live().first()
             context["next_page"] = self.get_next_siblings().live().first()
-
-        # Hack to complete relative links
-        context["js_links"] = []
-        if self.js_links:
-            for link in self.js_links.all():
-                if link.path.startswith('http'):
-                    context["js_links"].append(link.path)
-                else:
-                    context["js_links"].append("/static/js/{}".format(link.path))
-
         return context
 
 

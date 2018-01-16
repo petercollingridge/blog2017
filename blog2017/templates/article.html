@@ -10,7 +10,7 @@
     {% block extra_css %}
         <link rel="stylesheet" type="text/css" href="/static/css/ajaxcomments.css" />
         {% for link in page.css_links.all %}
-            <link rel="stylesheet" type="text/css" href="/static/css/{{ link.path }}">
+            <link rel="stylesheet" type="text/css" href="{{ link.path }}">
         {% endfor%}
     {% endblock %}
 {% endif %}
@@ -19,7 +19,7 @@
     <script type="text/javascript" src="/static/js/ajaxcomments.js"></script>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     {% for link in js_links %}
-        <script type="text/javascript" src="{{ link }}"></script>
+        <script type="text/javascript" src="{{ link.path }}"></script>
     {% endfor %}
 
     {% if page.extra_js_code %}
@@ -35,7 +35,7 @@
             <span class="date">{{ page.date }}</span>
             {% if page.github_link %}
             <span class="github-link">
-                <a href="{{ page.github_link }}">
+                <a href="{{ page.github_link }}" target="_blank">
                     <i class="fa fa-github"></i> <span>Code on Github</span>
                 </a>
             </span>
