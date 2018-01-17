@@ -60,6 +60,13 @@ section {
 	padding: 0 5px;
 }
 
+blockquote {
+	min-height: 2em;
+    border-left: solid 6px #aaa;
+    background: #e5e5e5;
+    padding: 10px 30px 10px 30px;
+}
+
 .container {
 	font-size: 18px;
 	line-height: 25px;
