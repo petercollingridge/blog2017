@@ -23,12 +23,16 @@
 	fill: #333;
 }
 
-a.social-icon:hover svg path {
-	fill: #004080;
+.social-icon:hover svg path {
+	fill: rgb(255, 0, 175);
 }
 
 .social-icon i {
 	margin-bottom: 5px;
+}
+
+.social-icon div {
+	padding-top: 4px;
 }
 
 h2 {
