@@ -196,6 +196,11 @@ pre {
 	margin-bottom: 30px;
 }
 
+.rich-text li {
+	line-height: 1.2em;
+	padding-bottom: 0.5em;
+}
+
 pre.prettyprint {
 	width: 100%;
 	margin: 0 10px;
