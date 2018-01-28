@@ -38,3 +38,9 @@
 h2 {
 	margin-top: 20px;
 }
+
+.rich-text ol li {
+	font-size: 85%;
+	line-height: 1.2em;
+	padding-bottom: 0.5em;
+}

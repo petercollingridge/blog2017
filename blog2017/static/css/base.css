@@ -70,10 +70,6 @@ code {
 	font-size: 80%;
 }
 
-pre {
-	margin-bottom: 1.5rem;
-}
-
 .container {
 	font-size: 18px;
 	line-height: 25px;
@@ -203,7 +199,7 @@ pre {
 
 pre.prettyprint {
 	width: 100%;
-	margin: 0 10px;
+	margin: 0 1rem 1.5rem 1rem;
 	font-size: 13px;
 	line-height: 1.2em;
 	white-space: pre-wrap;
