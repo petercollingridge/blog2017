@@ -4,13 +4,8 @@ from django.utils.html import format_html, format_html_join
 import django_comments
 
 from wagtail.wagtailcore import hooks
-from wagtail.wagtailcore.whitelist import attribute_rule, check_url, allow_without_attributes
+from wagtail.wagtailcore.whitelist import attribute_rule, check_url
 from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
-
-from fluent_comments.models import FluentComment
-from fluent_comments.compat import get_model as get_comments_model, BASE_APP
-
-from .models import GenericPage
 
 # https://jossingram.wordpress.com/2014/07/24/add-some-blockquote-buttons-to-wagtail-cms-wysiwyg-editor/
 # http://docs.wagtail.io/en/v1.8/reference/hooks.html
@@ -40,7 +35,7 @@ def editor_js():
         """
         <script>
             registerHalloPlugin('codebutton');
-            //registerHalloPlugin('blockquotebutton');
+            registerHalloPlugin('blockquotebutton');
             //registerHalloPlugin('blockquotebuttonwithclass');
         </script>
         """
@@ -66,5 +61,6 @@ class CommentAdmin(ModelAdmin):
         return format_html("<a href='{url}'>{name}</a>", url=obj.content_object.url, name=obj.content_object)
 
     show_page_link.short_description = "Page"
+
 
 modeladmin_register(CommentAdmin)
