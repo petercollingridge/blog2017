@@ -1,51 +1,41 @@
 from django.conf import settings
-from django.utils.html import format_html, format_html_join
-
 import django_comments
 
-from wagtail.wagtailcore import hooks
-from wagtail.wagtailcore.whitelist import attribute_rule, check_url
+from wagtail.core import hooks
 from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
 
-# https://jossingram.wordpress.com/2014/07/24/add-some-blockquote-buttons-to-wagtail-cms-wysiwyg-editor/
-# http://docs.wagtail.io/en/v1.8/reference/hooks.html
+import wagtail.admin.rich_text.editors.draftail.features as draftail_features
+from wagtail.admin.rich_text.converters.html_to_contentstate import BlockElementHandler
+
+# http://docs.wagtail.io/en/v2.0/advanced_topics/customisation/extending_draftail.html
 
 
-# Allow target attribute on anchor elements, and blockquote and code elements
-@hooks.register('construct_whitelister_element_rules')
-def whitelister_element_rules():
-    return {
-        'a': attribute_rule({'href': check_url, 'target': True}),
-        'blockquote': attribute_rule({'class': True}),
-        'code': attribute_rule({'class': True}),
+@hooks.register('register_rich_text_features')
+def register_blockquote_feature(features):
+    """
+    Registering the `blockquote` feature, which uses the `blockquote` Draft.js block type,
+    and is stored as HTML with a `<blockquote>` tag.
+    """
+    feature_name = 'blockquote'
+    type_ = 'blockquote'
+    tag = 'blockquote'
+
+    control = {
+        'type': type_,
+        'label': '❝',
+        'description': 'Blockquote',
+        # Optionally, we can tell Draftail what element to use when displaying those blocks in the editor.
+        'element': 'blockquote',
     }
 
-
-# Add custom JS to editor so we can add blockquotes and code elements
-@hooks.register('insert_editor_js')
-def editor_js():
-    js_files = [
-        '/js/hallo-custom-buttons.js',
-    ]
-    js_includes = format_html_join('\n', '<script src="{0}{1}"></script>',
-        ((settings.STATIC_URL, filename) for filename in js_files)
+    features.register_editor_plugin(
+        'draftail', feature_name, draftail_features.BlockFeature(control)
     )
 
-    return js_includes + format_html(
-        """
-        <script>
-            registerHalloPlugin('codebutton');
-            registerHalloPlugin('blockquotebutton');
-            //registerHalloPlugin('blockquotebuttonwithclass');
-        </script>
-        """
-    )
-
-
-# Add fontawesome to editor's CSS
-@hooks.register('insert_editor_css')
-def editor_css():
-    return format_html('<link rel="stylesheet" href="' + settings.STATIC_URL + '/css/font-awesome.min.css">')
+    features.register_converter_rule('contentstate', feature_name, {
+        'from_database_format': {tag: BlockElementHandler(type_)},
+        'to_database_format': {'block_map': {type_: tag}},
+    })
 
 
 class CommentAdmin(ModelAdmin):
