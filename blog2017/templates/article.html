@@ -32,16 +32,21 @@
 
     {% block top-navigation %}{% endblock %}
     <article>
-        <div class="info-header">
-            <span class="date">{{ page.date }}</span>
-            {% if page.github_link %}
-            <span class="github-link">
-                <a href="{{ page.github_link }}" target="_blank">
-                    <i class="fa fa-github"></i> <span>Code on Github</span>
-                </a>
-            </span>
-            {% endif %}
-        </div>
+        {% if page.date or page.github_link %}
+            <div class="info-header">
+                {% if page.date %}
+                    <span class="date">{{ page.date }}</span>
+                {% endif %}
+
+                {% if page.github_link %}
+                    <span class="github-link">
+                        <a href="{{ page.github_link }}" target="_blank">
+                            <i class="fa fa-github"></i> <span>Code on Github</span>
+                        </a>
+                    </span>
+                {% endif %}
+            </div>
+        {% endif %}
 
         {% include "home/includes/streamfield_blocks.html" with blocks=page.body %}
     </article>

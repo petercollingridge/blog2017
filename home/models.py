@@ -97,7 +97,7 @@ class GenericPage(Page):
     such as tool pages and standalone articles.
     """
 
-    date = models.DateField("Post date", blank=True)
+    date = models.DateField("Post date", null=True, blank=True)
     short_description = RichTextField(blank=True)
     github_link = models.URLField("Github link", blank=True)
     extra_js_code = models.TextField("Additional JS code", blank=True)
