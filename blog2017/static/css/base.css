@@ -212,7 +212,8 @@ code {
 
 pre.prettyprint {
 	width: 100%;
-	margin: 0 1rem 1.5rem 1rem;
+	max-width: 600px;
+	margin: 1rem auto;
 	font-size: 13px;
 	line-height: 1.2em;
 	white-space: pre-wrap;
