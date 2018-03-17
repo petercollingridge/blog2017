@@ -7,6 +7,10 @@
 {% block body_class %}section-index {{ page.title | lower }}-index{% endblock %}
 
 {% block content %}
+	{% include "home/includes/sibling_navigation.html" %}
+
+	<hr>
+
 	{{ page.introduction | richtext }}
 
 	<hr>

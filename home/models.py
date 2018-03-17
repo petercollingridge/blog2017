@@ -208,7 +208,7 @@ class IndexPage(Page):
         index_children = IndexPage.objects.child_of(self).live()
 
         # Combine children of different types
-        all_children = list(chain(generic_children, index_children))
+        all_children = list(chain(index_children, generic_children))
 
         # Split into those with short descriptions
         featured = []
