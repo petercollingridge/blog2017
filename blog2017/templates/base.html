@@ -66,10 +66,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js">
+        <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
         {% endblock %}
+
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(["_setAccount", "UA-13015193-1"]);
+          _gaq.push(["_trackPageview"]);
+          (function() {
+            var ga = document.createElement("script");
+            ga.type = "text/javascript";
+            ga.async = true;
+            ga.src = "/sites/files/peter/googleanalytics/ga.js?x";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(ga, s);
+          })();
+      </script>
     </body>
 </html>
