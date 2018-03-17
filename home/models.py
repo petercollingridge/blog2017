@@ -90,6 +90,16 @@ class GenericPageTag(TaggedItemBase):
     content_object = ParentalKey('GenericPage', related_name='tagged_items')
 
 
+# A block of page links with pictures and descriptions
+class PageLinksBlock(blocks.StructBlock):
+    featured_pages = blocks.ListBlock(blocks.PageChooserBlock(label="featured_page"))
+
+    class Meta:
+        icon = 'pick'
+        label = 'Featured section'
+        template = 'home/blocks/page_link_block.html'
+
+
 class GenericPage(Page):
     """
     GenericPage uses a Streamfield with a raw HTML block so is flexible.
@@ -119,6 +129,7 @@ class GenericPage(Page):
         ('image', ImageChooserBlock()),
         ('code_block', CodeBlock()),
         ('two_columns', TwoColumnBlock()),
+        ('link_block', PageLinksBlock())
     ])
 
     # Inherit search_fields from Page and add more
@@ -230,6 +241,7 @@ class IndexPage(Page):
 
 
 # A section block for the home page, showing featured Tool, Tutorials etc.
+# Contains a short descripton and as many links as you want
 class SectionBlock(blocks.StructBlock):
     section = blocks.PageChooserBlock(label="section_index")
     featured_pages = blocks.ListBlock(blocks.PageChooserBlock(label="featured_page"))

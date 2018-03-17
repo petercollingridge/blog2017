@@ -16,11 +16,7 @@
 	<hr>
 
 	{% if featured %}
-		<div class="row">
-			{% for child in featured %}
-				{% include "home/includes/featured_page_link.html" with featured_page=child.specific %}
-			{% endfor %}
-		</div>
+		{% include "home/includes/featured_page_link.html" with featured_pages=featured %}
 	{% endif %}
 
 	{% if children %}

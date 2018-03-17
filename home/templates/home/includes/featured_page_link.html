@@ -1,22 +1,26 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<div class="col-md-6 offset-md-0 col-sm-10 offset-sm-1 featured-page-container">
-	<div class="featured-page">
-		<a class="featured-page-link" href="{{ featured_page.url }}">
-			{% if featured_page.featured_image %}
-				<div class="featured-page-image">
-					{% image featured_page.featured_image width-100 %}
-				</div>
-			{% endif %}
+<div class="row">
+	{% for featured_page in featured_pages %}
+		<div class="col-md-6 offset-md-0 col-sm-10 offset-sm-1 featured-page-container">
+			<div class="featured-page">
+				<a class="featured-page-link" href="{{ featured_page.url }}">
+					{% if featured_page.specific.featured_image %}
+						<div class="featured-page-image">
+							{% image featured_page.specific.featured_image width-100 %}
+						</div>
+					{% endif %}
 
-			<div class="featured-page-text">
-				<div class="featured-page-title">{{ featured_page.title }}</div>
-				{% if featured_page.short_description %}
-					<div class="featured-page-details">
-						{{ featured_page.short_description | richtext }}
+					<div class="featured-page-text">
+						<div class="featured-page-title">{{ featured_page.title }}</div>
+						{% if featured_page.specific.short_description %}
+							<div class="featured-page-details">
+								{{ featured_page.specific.short_description | richtext }}
+							</div>
+						{% endif %}
 					</div>
-				{% endif %}
+				</a>
 			</div>
-		</a>
-	</div>
+		</div>
+	{% endfor %}
 </div>
