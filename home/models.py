@@ -215,7 +215,8 @@ class IndexPage(Page):
         not_featured = []
 
         for child in all_children:
-            if child.short_description:
+            # Make sure description is not just <p></p>
+            if len(child.short_description) > 7:
                 featured.append(child)
             else:
                 not_featured.append(child)
