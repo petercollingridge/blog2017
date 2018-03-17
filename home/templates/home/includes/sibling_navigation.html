@@ -8,7 +8,13 @@
         {% endif %}
     </div>
     <div class="col-4 parent-page-link">
-        <a href="{{ page.get_parent.url }}">{{ page.get_parent }}</a>
+        <a href="{{ page.get_parent.url }}">
+            {% if page.get_parent.url == "/" %}
+                Home
+            {% else %}
+                {{ page.get_parent }}
+            {% endif %}
+        </a>
     </div>
     <div class="col-4 next-page-link">
         {% if next_page %}
