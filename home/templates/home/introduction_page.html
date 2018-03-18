@@ -27,17 +27,14 @@
 
     <div class="row">
         <div class="col-xs-12 parent-page-link">
-            <a href="{{ page.get_parent.url }}">Back to {{ page.get_parent }}</a>
+            <a href="{{ page.get_parent.url }}">{{ page.get_parent }}</a>
         </div>
     </div>
 
     <hr>
 
-    {% if page.date %}
-        <p class="meta">{{ page.date }}</p>
-    {% endif %}
-
     <article>
+        {% include "home/includes/info_header.html" %}
         <div class="row">
             <div class="col-sm-5">
                 <ol>
