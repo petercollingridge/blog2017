@@ -163,13 +163,14 @@ hr {
 .date {
 	font-weight: bold;
 	position: absolute;
+	left: 15px;
 	bottom: 0;
 	padding-bottom: 3px
 }
 
 .github-link {
 	position: absolute;
-	right: 0;
+	right: 15px;
 	bottom: 0;
 }
 
@@ -177,19 +178,14 @@ hr {
 	font-size: 1.5em;
 }
 
-.two-col-block .row {
-	padding-left: 5px;
-	padding-right: 5px;
-}
-
 .block_type-two_columns canvas {
 	display: block;
-	margin: 0 auto;
+	margin: 0 auto 1.5rem auto;
 }
 
 .img-responsive {
-	margin: 0 auto;
 	display: block;
+	margin: 0 auto 1.5rem auto;
 }
 
 .comment-item {
@@ -213,10 +209,6 @@ hr {
 .rich-text li {
 	padding-bottom: 0.5em;
 	text-align: justify;
-}
-
-.two-col-block {
-	margin-bottom: 1.5rem;
 }
 
 pre.prettyprint {
