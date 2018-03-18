@@ -53,10 +53,13 @@ article {
 }
 
 p {
+	text-align: justify;
+}
+
+article p {
 	padding-left: 15px;
 	padding-right: 15px;
 	margin-bottom: 1.5rem;
-	text-align: justify;
 }
 
 section {
