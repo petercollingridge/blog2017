@@ -1,7 +1,10 @@
 {% load wagtailcore_tags %}
 
 <h2><a class="section-heading" href="{{ value.section.url }}">{{ value.section.title }}</a></h2>
-{{ value.section.specific.introduction | richtext }}
-{{ value.section.specific.short_description | richtext }}
+{% if value.section.specific.short_description %}
+	{{ value.section.specific.short_description | richtext }}
+{% else %}
+	{{ value.section.specific.introduction | richtext }}
+{% endif %}
 {% include "home/includes/featured_page_link.html" with featured_pages=value.featured_pages %}
 <p class="section-more-link"><a href="{{ value.section.url }}">More {{ value.section.title }} here &raquo;</a></p>
