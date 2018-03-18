@@ -6,18 +6,14 @@
             <h2>{{ block.value }}</h2>
         {% elif block.block_type == 'icon_block' %}
             {% include_block block %}
+        {% elif block.block_type == 'image' %}
+            {% image block.value width-300 class="img-responsive" %}
+        {% elif block.block_type == 'code' or block.block_type == 'two_columns' %}
+            {% include_block block %}
         {% else %}
-            <div class="row">
-            {% if block.block_type == 'image' %}
-                {% image block.value width-300 class="img-responsive" %}
-            {% elif block.block_type == 'code' or block.block_type == 'two_columns' %}
-                {% include_block block %}
-            {% else %}
-                <section class="block-{{ block.block_type }}">
-                    {{ block }}
-                </section>
-            {% endif %}
-            </div>
+            <section class="block-{{ block.block_type }}">
+                {{ block }}
+            </section>
         {% endif %}
     {% endfor %}
 {% endif %}
