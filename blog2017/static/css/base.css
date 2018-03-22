@@ -81,6 +81,20 @@ hr {
 	margin-right: -25px;
 }
 
+article table {
+	margin-bottom: 1.5rem;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+article table td {
+    padding-right: 15px;
+}
+
+article object {
+	margin: 0 auto 1.5rem auto;
+}
+
 .container {
 	font-size: 18px;
 	line-height: 25px;
@@ -242,7 +256,7 @@ li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
 .equation {
 	font-size: 1.25rem;
 	padding-left: 20px;
-	margin-bottom: 12px;
+	margin-bottom: 1.5rem;
 }
 
 .navigation-name {
