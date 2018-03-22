@@ -83,8 +83,8 @@ hr {
 
 .block-html table {
 	margin-bottom: 1.5rem;
-	padding-left: 20px;
-	padding-right: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
 .block-html table td {
@@ -93,6 +93,7 @@ hr {
 
 .block-html object {
 	margin: 0 auto 1.5rem auto;
+	display: block;
 }
 
 .container {
