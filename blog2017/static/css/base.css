@@ -81,17 +81,17 @@ hr {
 	margin-right: -25px;
 }
 
-article table {
+.block-html table {
 	margin-bottom: 1.5rem;
 	padding-left: 20px;
 	padding-right: 20px;
 }
 
-article table td {
+.block-html table td {
     padding-right: 15px;
 }
 
-article object {
+.block-html object {
 	margin: 0 auto 1.5rem auto;
 }
 
