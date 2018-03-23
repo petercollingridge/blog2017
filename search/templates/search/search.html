@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% load static wagtailcore_tags %}
 
-{% block body_class %}template-searchresults{% endblock %}
+{% block more_meta %}<meta name="robots" content="noindex">{% endblock %}
 
 {% block title %}Search{% endblock %}
+{% block body_class %}template-searchresults{% endblock %}
 
 {% block content %}
     <h1>Search</h1>

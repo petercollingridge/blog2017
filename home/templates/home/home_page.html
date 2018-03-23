@@ -4,13 +4,11 @@
 {% load wagtailcore_tags %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% include_block page.body %}
+{% block more_meta %}<meta name="description" content="Landing page for petercollingridge.co.uk">{% endblock %}
+{% block extra_css %}<link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}">{% endblock %}
 
 {% block body_class %}home-body{% endblock %}
-
-{% block extra_css %}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}">
-{% endblock %}
+{% include_block page.body %}
 
 {% block content %}
 	<article>

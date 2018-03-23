@@ -1,12 +1,13 @@
 {% extends "base.html" %}
-{% load static wagtailuserbar %}
 
+{% load static wagtailuserbar %}
 {% load wagtailcore_tags wagtailimages_tags %}
-{% include_block page.body %}
+
+{% block more_meta %}<meta name="description" content="List of tags for petercollingridge.co.uk pages">{% endblock %}
 
 {% block heading %}{{ page.title }}{% endblock %}
-
 {% block body_class %}tagpage-body{% endblock %}
+{% include_block page.body %}
 
 {% block content %}
     {% if tag %}

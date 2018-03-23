@@ -8,9 +8,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Landing page for petercollingridge.co.uk">
         <meta name="author" content="Peter Collingridge">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        {% block more_meta %}{% endblock %}
 
         <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
 

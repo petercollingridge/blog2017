@@ -1,7 +1,10 @@
 {% extends "base.html" %}
+
 {% load wagtailcore_tags %}
 
 {% block heading %}{{ page.title }}{% endblock %}
+
+{% block more_meta %}<meta name="description" content="Contact page for Peter Collingridge">{% endblock %}
 {% block extra_css %}<link rel="stylesheet" type="text/css" href="/static/css/contact_me.css">{% endblock %}
 
 {% block content %}
