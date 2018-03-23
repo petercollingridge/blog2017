@@ -1,0 +1,35 @@
+svg.blog-graph .data-series {
+    stroke-width: 2;
+    fill: none;
+}
+
+svg.blog-graph .axis {
+    stroke: #111;
+    stroke-width: 1;
+}
+
+svg.blog-graph .y-axis-text {
+    text-anchor: end;
+}
+
+svg.blog-graph .axis-units {
+    font-size: 10px;
+    font-family: Arial;
+}
+
+svg.blog-graph .gridlines{
+    opacity: 0.5;
+    stroke: black;
+    stroke-width: 0.5;
+    fill: none;
+}
+
+svg.blog-graph .x-axis-text {
+    text-anchor: middle;
+}
+
+svg.blog-graph .axis-label {
+    font-size:  14px;
+    font-family:  Arial;
+    text-anchor:  middle;
+}
