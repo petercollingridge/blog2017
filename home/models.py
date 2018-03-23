@@ -1,6 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 from itertools import chain
+from operator import attrgetter
 
 from django.db import models
 from django.shortcuts import render
@@ -232,10 +233,9 @@ class IndexPage(Page):
             else:
                 not_featured.append(child)
 
-        # context['children'] = sorted(not_featured, key=attrgetter('date'))
         # context['featured'] = sorted(featured, key=attrgetter('date'))
         context['children'] = not_featured
-        context['featured'] = featured
+        context['featured'] = sorted(not_featured, key=attrgetter('date'))
 
         return context
 
