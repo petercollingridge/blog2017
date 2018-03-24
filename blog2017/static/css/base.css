@@ -226,7 +226,7 @@ hr {
 
 .rich-text ol, .rich-text ul {
 	line-height: 1.2em;
-	margin-left: 15px;
+	margin: 0 15px 1rem 15px;
 	padding-right: 15px;
 	border-top: 1px solid #aaa;
     border-bottom: 1px solid #aaa;
@@ -234,8 +234,8 @@ hr {
 }
 
 .rich-text li {
-	padding-bottom: 0.15em;
-    padding-top: 0.5em;
+	padding-bottom: 0.15rem;
+    padding-top: 0.5rem;
 	text-align: justify;
 }
 
