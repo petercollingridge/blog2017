@@ -56,8 +56,8 @@ p {
 }
 
 article p {
-	padding-left: 15px;
-	padding-right: 15px;
+	padding-left: 1rem;
+	padding-right: 1rem;
 	margin-bottom: 1.5rem;
 }
 
@@ -88,7 +88,7 @@ hr {
 }
 
 .block-html th, td {
-    padding-right: 15px;
+    padding-right: 1rem;
     text-align: center;
 }
 
@@ -226,8 +226,8 @@ hr {
 
 .rich-text ol, .rich-text ul {
 	line-height: 1.2em;
-	margin: 0 15px 1rem 15px;
-	padding-right: 15px;
+	margin: 0 1rem 1.5rem 1rem;
+	padding-right: 1rem;
 	border-top: 1px solid #aaa;
     border-bottom: 1px solid #aaa;
     display: inline-block;
