@@ -45,3 +45,20 @@ li.comment-wrapper {
 .js-comments-form-orig-position .comment-cancel-reply-link {
   display: none;
 }
+
+#comments-wrapper, #comments-form-wrapper {
+  margin-bottom: 30px;
+}
+
+.comment-item {
+  transition: all 300ms ease;
+  padding: 5px 1rem 0 1rem;
+}
+
+.comment-text {
+  background-color: #f8f8f8;
+  padding:  0.5rem 1rem 0 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #aaa;
+  border-top: 1px solid #aaa;
+}
