@@ -47,7 +47,6 @@
         <div id="comments-wrapper">
             {% if comments_count %}
                 <h2>Comments ({{ comments_count }})</h2>
-                <h3 class="has-comments-title"></h3>
                 {% render_comment_list for page %}
             {% else %}
                 {% render_comment_list for page %}
