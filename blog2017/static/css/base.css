@@ -301,13 +301,8 @@ li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
 	transition: all 300ms ease;
 }
 
-.featured-page:hover {
-	/*background-color: #f4f4f4;
-	-moz-transform: rotate(-2deg) translateY(-5px);
-	-webkit-transform: rotate(-2deg) translateY(-5px);
-	-o-transform: rotate(-2deg) translateY(-5px);
-	transform: rotate(-2deg) translateY(-5px);
-	*/
+.featured-page-block {
+	margin-bottom: 1.5rem;
 }
 
 .section-more-link {
