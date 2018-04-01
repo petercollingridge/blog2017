@@ -212,6 +212,11 @@ hr {
 	margin: 0 auto 1.5rem auto;
 }
 
+.block-html iframe {
+	display: block;
+	margin: 0 auto 1.5rem auto;
+}
+
 .img-responsive {
 	display: block;
 	margin: 0 auto 1.5rem auto;
@@ -315,7 +320,7 @@ a:hover {
 
 .featured-page-image {
 	float: left;
-	margin: 5px;
+	margin: 5px 5px 5px 10px;
 }
 
 .featured-page-text {
