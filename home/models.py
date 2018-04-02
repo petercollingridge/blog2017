@@ -289,7 +289,7 @@ class AboutPage(Page):
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
         ('icon_block', IconBlock()),
-        ('section_block', SectionBlock())
+        ('link_block', PageLinksBlock())
     ])
 
     content_panels = Page.content_panels + [
