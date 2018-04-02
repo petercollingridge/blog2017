@@ -17,6 +17,7 @@
 .social-icon svg {
 	width: 48px;
 	height: 48px;
+	margin: 0;
 }
 
 .social-icon svg path {
