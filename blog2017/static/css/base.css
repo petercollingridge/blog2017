@@ -239,16 +239,14 @@ hr {
 
 pre.prettyprint {
 	width: 100%;
-	max-width: 600px;
+	max-width: 700px;
 	margin: 0 auto 1.5rem auto;
 	font-size: 13px;
-	line-height: 1.2em;
+	line-height: 0.9rem;
 	white-space: pre-wrap;
 	/* Overwriting default border style */
 	padding: 0 !important;
 	border: 1px solid #aaa !important;
-	border-left: none !important;
-	border-right: none !important;
 }
 
 .prettyprint li {
