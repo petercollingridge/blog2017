@@ -285,6 +285,8 @@ class IconBlock(blocks.StructBlock):
 
 
 class AboutPage(Page):
+    short_description = RichTextField(blank=True)
+
     body = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
@@ -293,6 +295,7 @@ class AboutPage(Page):
     ])
 
     content_panels = Page.content_panels + [
+        FieldPanel('short_description'),
         StreamFieldPanel('body'),
     ]
 
