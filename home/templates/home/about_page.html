@@ -11,6 +11,20 @@
 {% include_block page.body %}
 
 {% block content %}
+    <div class="row">
+        <div class="col-xs-12 parent-page-link">
+            <a href="{{ page.get_parent.url }}">
+	            {% if page.get_parent.url == "/" %}
+	                Home
+	            {% else %}
+	                {{ page.get_parent }}
+	            {% endif %}
+        	</a>
+        </div>
+    </div>
+
+    <hr>
+
 	<article>
         {% include "home/includes/streamfield_blocks.html" with blocks=page.body %}
     </article>
