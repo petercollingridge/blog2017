@@ -46,6 +46,7 @@ class CommentAdmin(ModelAdmin):
     menu_order = 200
     add_to_settings_menu = False
     list_display = ('user_name', 'submit_date', 'show_page_link', 'comment')
+    ordering = ('-submit_date',)
 
     def show_page_link(self, obj):
         return format_html("<a href='{url}'>{name}</a>", url=obj.content_object.url, name=obj.content_object)
