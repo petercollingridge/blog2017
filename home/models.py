@@ -111,6 +111,7 @@ class GenericPage(Page):
     date = models.DateField("Post date", null=True, blank=True)
     short_description = RichTextField(blank=True)
     github_link = models.URLField("Github link", blank=True)
+    include_mathjax = models.BooleanField("Include mathjax")
     extra_js_code = models.TextField("Additional JS code", blank=True)
     show_siblings = models.BooleanField(default=False)
     tags = ClusterTaggableManager(through=GenericPageTag, blank=True)
@@ -145,6 +146,7 @@ class GenericPage(Page):
         MultiFieldPanel(
             [
                 FieldPanel('github_link'),
+                FieldPanel('include_mathjax'),
                 InlinePanel('css_links', label="CSS links"),
                 InlinePanel('js_links', label="JS links"),
                 FieldPanel('extra_js_code'),
@@ -191,6 +193,7 @@ class IntroductionPage(GenericPage):
 class IndexPage(Page):
     introduction = RichTextField(blank=True)
     short_description = RichTextField(blank=True)
+    #related_pages = blocks.ListBlock(blocks.PageChooserBlock(label="related_page"))
 
     featured_image = models.ForeignKey(
         'wagtailimages.Image',

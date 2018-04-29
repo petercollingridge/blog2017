@@ -17,6 +17,11 @@
     <script type="text/javascript" src="/static/js/ajaxcomments.js"></script>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 
+    {% if page.include_mathjax %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}});</script>
+    {% endif %}
+
     {% for link in page.js_links.all %}
         <script type="text/javascript" src="{{ link.path }}"></script>
     {% endfor %}
