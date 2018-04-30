@@ -20,7 +20,7 @@ from wagtail.core.fields import RichTextField, StreamField
 
 from wagtail.search import index
 
-from wagtail.admin.edit_handlers import FieldPanel, FieldRowPanel, StreamFieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, FieldRowPanel, StreamFieldPanel, InlinePanel, MultiFieldPanel, PageChooserPanel
 
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
@@ -189,11 +189,23 @@ class IntroductionPage(GenericPage):
         return context
 
 
+# The abstract model for related links, complete with panels
+class RelatedPage(models.Model):
+    page_link = models.ForeignKey('wagtailcore.Page', blank=True, null=True, on_delete=models.CASCADE, related_name='+')
+    panels = [PageChooserPanel('page_link')]
+
+    class Meta:
+        abstract = True
+
+
+class IndexPageRelatedPages(Orderable, RelatedPage):
+    page = ParentalKey('IndexPage', on_delete=models.CASCADE, related_name='related_pages')
+
+
 # A page containing links to child pages.
 class IndexPage(Page):
     introduction = RichTextField(blank=True)
     short_description = RichTextField(blank=True)
-    #related_pages = blocks.ListBlock(blocks.PageChooserBlock(label="related_page"))
 
     featured_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -213,6 +225,7 @@ class IndexPage(Page):
             heading="Featured content information",
             classname="collapsible collapsed"
         ),
+        InlinePanel('related_pages', label="Related Pages"),
     ]
 
     def get_context(self, request):
@@ -239,6 +252,7 @@ class IndexPage(Page):
         # context['featured'] = sorted(featured, key=attrgetter('date'))
         context['children'] = sorted(not_featured, key=lambda page: page.date if hasattr(page, 'date') else date.today(), reverse=True)
         context['featured'] = featured
+        context['related_pages'] = [related_page.page_link for related_page in self.related_pages.all()]
 
         return context
 

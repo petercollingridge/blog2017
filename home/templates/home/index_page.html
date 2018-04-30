@@ -28,4 +28,9 @@
 		{% endfor %}
 	{% endif %}
 
+	{% if related_pages %}
+		<h2>Related</h2>
+		{% include "home/includes/featured_page_link.html" with featured_pages=related_pages %}
+	{% endif %}
+
 {% endblock %}
