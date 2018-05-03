@@ -22,10 +22,11 @@
 
 	{% if children %}
 		{% if featured %}<h2>More</h2>{% endif %}
-
-		{% for child in children %}
-			<div>{{ child.specific.date }} <a href="{{ child.slug }}">{{ child.title }}</a></div>
-		{% endfor %}
+		<div class="featured-page-block">
+			{% for child in children %}
+				<div>{{ child.specific.date }} <a href="{{ child.slug }}">{{ child.title }}</a></div>
+			{% endfor %}
+		</div>
 	{% endif %}
 
 	{% if related_pages %}
