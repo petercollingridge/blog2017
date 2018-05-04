@@ -217,7 +217,7 @@ hr {
 	margin: 0 auto 1.5rem auto;
 }
 
-.img-responsive {
+.img-responsive, .rich-text img {
 	display: block;
 	margin: 0 auto 1.5rem auto;
 }
@@ -231,6 +231,10 @@ hr {
     display: inline-block;
 }
 
+ol.linenums {
+	padding-left: 50px;
+}
+
 .rich-text li {
 	padding-bottom: 0.15rem;
     padding-top: 0.5rem;
@@ -238,10 +242,8 @@ hr {
 }
 
 pre.prettyprint {
-	width: 100%;
-	max-width: 700px;
-	margin: 0 auto 1.5rem auto;
-	font-size: 13px;
+	margin: 0 1rem 1.5rem 1rem;
+	font-size: 0.8rem;
 	line-height: 0.9rem;
 	white-space: pre-wrap;
 	/* Overwriting default border style */
