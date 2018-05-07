@@ -148,6 +148,7 @@ COMMENTS_APP = 'fluent_comments'
 
 FLUENT_COMMENTS_FORM_CLASS = 'fluent_comments.forms.CompactCommentForm'
 FLUENT_COMMENTS_EXCLUDE_FIELDS = ('url', 'email')
+FLUENT_COMMENTS_MODERATE_AFTER_DAYS = 0
 #FLUENT_COMMENTS_COMPACT_FIELDS = ('name', 'honeypot')
 
 # Wagtail settings

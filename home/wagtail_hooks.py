@@ -45,13 +45,16 @@ class CommentAdmin(ModelAdmin):
     menu_icon = 'list-ul'
     menu_order = 200
     add_to_settings_menu = False
-    list_display = ('user_name', 'submit_date', 'show_page_link', 'comment')
-    ordering = ('-submit_date',)
+    list_display = ('user_name', 'submit_date', 'show_page_link', 'comment', 'is_public')
+    ordering = ('is_public', '-submit_date')
 
     def show_page_link(self, obj):
         return format_html("<a href='{url}'>{name}</a>", url=obj.content_object.url, name=obj.content_object)
 
-    show_page_link.short_description = "Page"
+#    def get_queryset(self, request):
+#        qs = super().get_queryset(request)
+#        return qs.filter(is_public=True)
 
+    show_page_link.short_description = "Page"
 
 modeladmin_register(CommentAdmin)
