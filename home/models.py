@@ -1,6 +1,4 @@
 from __future__ import absolute_import, unicode_literals
-
-from itertools import chain
 from datetime import date
 
 from django.db import models
@@ -230,19 +228,11 @@ class IndexPage(Page):
 
     def get_context(self, request):
         context = super(IndexPage, self).get_context(request)
-
-        # Get children with different model types
-        generic_children = GenericPage.objects.child_of(self).live()
-        index_children = IndexPage.objects.child_of(self).live()
-
-        # Combine children of different types
-        all_children = list(chain(index_children, generic_children))
-
-        # Split into those with short descriptions
         featured = []
         not_featured = []
 
-        for child in all_children:
+        for child in self.get_children():
+            child = child.specific
             # Make sure description is not just <p></p>
             if len(child.short_description) > 7:
                 featured.append(child)
