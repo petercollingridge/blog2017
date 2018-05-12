@@ -231,7 +231,7 @@ class IndexPage(Page):
         featured = []
         not_featured = []
 
-        for child in self.get_children():
+        for child in self.get_children().live():
             child = child.specific
             # Make sure description is not just <p></p>
             if len(child.short_description) > 7:
