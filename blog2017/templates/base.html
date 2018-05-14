@@ -21,6 +21,7 @@
         <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:500|Josefin+Sans:300,600' rel='stylesheet' type='text/css'>
         <link rel="shortcut icon" href="http://wagtail.petercollingridge.co.uk/favicon.ico" />
 
+        {% block comment_css %}{% endblock %}
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
@@ -66,6 +67,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
+        {% block comment_js %}{% endblock %}
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
         {% endblock %}

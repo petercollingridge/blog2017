@@ -1,25 +1,8 @@
-{% extends "base.html" %}
+{% extends "article.html" %}
 
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block more_meta %}<meta name="description" content="Introduction page for {{ page.title }}">{% endblock %}
-
-{% if page.css_links.all %}
-    {% block extra_css %}
-        {% for link in page.css_links.all %}
-            <link rel="stylesheet" type="text/css" href="/static/css/{{ link.path }}">
-        {% endfor%}
-    {% endblock %}
-{% endif %}
-
-{% block extra_js %}
-    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    {% if page.js_links.all %}
-        {% for link in page.js_links.all %}
-            <script type="text/javascript" src="/static/js/{{ link.path }}"></script>
-        {% endfor%}
-    {% endif %}
-{% endblock %}
 
 {% block body_class %}introduction-body{% endblock %}
 {% include_block page.body %}

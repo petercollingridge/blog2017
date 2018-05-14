@@ -1,9 +1,58 @@
 {% extends "article.html" %}
 
-{% block top-navigation %}
-    {% include "home/includes/sibling_navigation.html" %}
+{% load wagtailcore_tags wagtailimages_tags comments fluent_comments_tags %}
+
+{% block more_meta %}<meta name="description" content="{{ page.title }}">{% endblock %}
+
+{% block comment_css %}
+    <link rel="stylesheet" type="text/css" href="/static/css/ajaxcomments.css"/>
 {% endblock %}
 
-{% block bottom-navigation %}
+{% block comment_js %}
+    <script type="text/javascript" src="/static/js/ajaxcomments.js"></script>
+{% endblock %}
+
+{% block body_class %}article-body{% endblock %}
+
+{% include_block page.body %}
+
+    {% block content %}
+
     {% include "home/includes/sibling_navigation.html" %}
+
+    <hr>
+
+    {% include "home/includes/info_header.html" %}
+    
+    <article>
+        {% include "home/includes/streamfield_blocks.html" with blocks=page.body %}
+    </article>
+
+    {% get_comment_count for page as comments_count %}
+
+    <div>
+        <div id="comments-wrapper">
+            {% if comments_count %}
+                <h2>Comments ({{ comments_count }})</h2>
+                {% render_comment_list for page %}
+            {% else %}
+                {% render_comment_list for page %}
+            {% endif %}
+          </div>
+
+         <div id="comments-form-wrapper">
+            <h2>Leave a comment</h2>
+            {% render_comment_form for page %}
+        </div>
+    </div>
+
+    {% if page.tags.all %}
+        <h2>Tags</h2>
+        {% for tag in page.tags.all %}
+            <a href="/tags?tag={{ tag }}"><span class="page-tag">{{ tag }}</span></a>
+        {% endfor %}
+    {% endif %}
+
+    {% include "home/includes/sibling_navigation.html" %}
+
 {% endblock %}
