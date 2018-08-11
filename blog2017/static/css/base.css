@@ -318,6 +318,8 @@ a:hover {
 	-webkit-box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.3);
 	-moz-box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.3);
 	box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.3);
+	position: relative;
+	overflow: hidden;
 }
 
 .featured-page-block {
@@ -326,12 +328,14 @@ a:hover {
 
 .featured-page-image {
 	margin: 5px 15px 5px 10px;
-	float: left;
+	display: inline-block;
 }
 
 .featured-page-text {
 	text-align: center;
-	padding: 5px;
+	padding-right: 10px;
+	display: inline-block;
+	position: absolute;
 }
 
 .featured-page-title {
@@ -344,11 +348,16 @@ a:hover {
 }
 
 .featured-page-details {
-	font-size: 0.8em;
-	line-height: 1.5em;
+	font-size: 0.85rem;
+	line-height: 1.2rem;
 	padding: 2px 10px;
 	margin: auto;
 	color: black;
+}
+
+.featured-page-details p {
+	padding: 0;
+	margin: 0;
 }
 
 .featured-page-link:hover {
