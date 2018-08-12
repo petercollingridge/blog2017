@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'fluent_comments',
     'crispy_forms',
     'django_comments',
+    'nocaptcha_recaptcha',
 
     'django.contrib.sites',
     'django.contrib.admin',
@@ -146,10 +147,13 @@ MEDIA_URL = '/media/'
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 COMMENTS_APP = 'fluent_comments'
 
+# FLUENT_COMMENTS_FORM_CLASS = 'fluent_comments.forms.recaptcha.CompactCommentForm'
 FLUENT_COMMENTS_FORM_CLASS = 'fluent_comments.forms.CompactCommentForm'
 FLUENT_COMMENTS_EXCLUDE_FIELDS = ('url', 'email')
 FLUENT_COMMENTS_MODERATE_AFTER_DAYS = 0
-#FLUENT_COMMENTS_COMPACT_FIELDS = ('name', 'honeypot')
+
+NORECAPTCHA_SITE_KEY = "the Google provided site_key"
+NORECAPTCHA_SECRET_KEY = "the Google provided secret_key"
 
 # Wagtail settings
 
