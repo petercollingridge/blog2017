@@ -319,7 +319,6 @@ a:hover {
 	-moz-box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.3);
 	box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.3);
 	position: relative;
-	overflow: hidden;
 }
 
 .featured-page-block {
@@ -336,6 +335,8 @@ a:hover {
 	padding-right: 10px;
 	display: inline-block;
 	position: absolute;
+	height: 105px;
+	overflow: hidden;
 }
 
 .featured-page-title {
@@ -366,6 +367,12 @@ a:hover {
 
 .featured-page:hover .featured-page-title{
 	text-decoration: underline;
+}
+
+.latest-page {
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .search-result-heading {

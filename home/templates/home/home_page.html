@@ -16,11 +16,11 @@
 		<h2>Latest</h2>
 		<div class="row">
 			{% for latest_page in page.latest %}
-				<div class="col-md-4 featured-page-text">
+				<div class="col-md-4 latest-page">
+					<div>{{ latest_page.date }}</div>
 					<a class="featured-page-link featured-page-title" href="{{ latest_page.url }}">
 						{{ latest_page.title }}
 					</a>
-					<div>{{ latest_page.date }}</div>
 					<div class="featured-page-details">
 						{{ latest_page.short_description | richtext }}
 					</div>
