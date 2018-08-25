@@ -235,14 +235,6 @@ hr {
 	height: auto;
 }
 
-.left-block .img-responsive {
-	float: left;
-}
-
-.right-block .img-responsive {
-	float: right;
-}
-
 .rich-text ol, .rich-text ul {
 	line-height: 1.2em;
 	margin: 0 1rem 1.5rem 1rem;
