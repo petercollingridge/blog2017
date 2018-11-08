@@ -149,11 +149,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 COMMENTS_APP = 'fluent_comments'
 
 FLUENT_COMMENTS_FORM_CLASS = 'fluent_comments.forms.recaptcha.CompactCommentForm'
-#FLUENT_COMMENTS_FORM_CLASS = 'fluent_comments.forms.CompactCommentForm'
 FLUENT_COMMENTS_EXCLUDE_FIELDS = ('url', 'email')
 FLUENT_COMMENTS_MODERATE_AFTER_DAYS = 0
-
-#NOCAPTCHA = True
+NOCAPTCHA = True
 
 # Wagtail settings
 
