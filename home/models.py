@@ -152,18 +152,17 @@ class GenericPage(Page):
             heading="Additional resources",
             classname="collapsible collapsed"
         ),
+        StreamFieldPanel('body'),
+    ]
+
+    promote_panels = [
         MultiFieldPanel(
             [
                 ImageChooserPanel('featured_image'),
                 FieldPanel('short_description'),
             ],
             heading="Featured content information",
-            classname="collapsible collapsed"
-        ),
-        StreamFieldPanel('body'),
-    ]
-
-    promote_panels = Page.promote_panels + [FieldPanel('tags')]
+        )] + Page.promote_panels + [FieldPanel('tags')]
 
     def get_context(self, request):
         context = super(GenericPage, self).get_context(request)

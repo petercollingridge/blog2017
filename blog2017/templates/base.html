@@ -1,4 +1,5 @@
 {% load static wagtailuserbar %}
+{% load wagtailimages_tags %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -10,6 +11,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="author" content="Peter Collingridge">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <meta property="og:site_name" content="petercollingridge.co.uk" />
+        <meta property="og:title" content="{{ self.title }}" />
+
+      {% if self.search_description %}
+        <meta name="description" content="{{ self.search_description }}" />
+        <meta property="og:description" content="{{ self.search_description }}" />
+      {% endif %}
+
+      {% if self.featured_image %}
+        {% image self.featured_image width-100 as featured_image %}
+        <meta property="og:image" content="{{ self.get_site.root_url }}{{ featured_image.url }}" />
+      {% endif %}
+
         {% block more_meta %}{% endblock %}
 
         <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
