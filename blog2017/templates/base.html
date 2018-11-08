@@ -15,8 +15,9 @@
         <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
         
         <meta property="og:site_name" content="petercollingridge.co.uk" />
-        <meta property="og:title" content="{{ self.title }}" />
+        <meta property="og:type" content="website" /> 
         <meta property="og:url" content="{{ self.get_site.root_url }}{{ self.url }}" />
+        <meta property="og:title" content="{{ self.title }}" />
 
       {% if self.search_description %}
         <meta name="description" content="{{ self.search_description }}" />
