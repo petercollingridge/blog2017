@@ -214,7 +214,7 @@ hr {
 	font-size: 1.5em;
 }
 
-.block_type-two_columns canvas {
+.two-col-block canvas {
 	display: block;
 	margin: 0 auto 1.5rem auto;
 }
