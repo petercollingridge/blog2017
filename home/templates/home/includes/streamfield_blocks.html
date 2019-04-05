@@ -7,11 +7,17 @@
         {% elif block.block_type == 'icon_block' %}
             {% include_block block %}
         {% elif block.block_type == 'image' %}
-            {% image block.value width-300 class="img-responsive" %}
+            <section class="section-block block-img">
+                {% image block.value width-300 class="img-responsive" %}
+            </section>
         {% elif block.block_type == 'code' or block.block_type == 'two_columns' %}
             {% include_block block %}
+        {% elif block.block_type == 'section_block' %}
+            <section class="blog-section">
+                {{ block }}
+            </section>
         {% else %}
-            <section class="block-{{ block.block_type }}">
+            <section class="section-block block-{{ block.block_type }}">
                 {{ block }}
             </section>
         {% endif %}

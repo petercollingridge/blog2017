@@ -28,16 +28,16 @@ h2 {
 	background-color: #333;
 	font-size: 1.5em;
 	padding-top: 8px;
-	padding-left: 20px;
-	margin: 0 -25px 20px -25px;
+	padding-left: 1.5rem;
+	margin: 0 -1.5rem 20px -1.5rem;
 }
 
 h3 {
 	font-size: 1.4rem;
 	font-weight: 600;
 	padding-top: 1rem;
-	padding-left: 20px;
-	margin: 20px -25px;
+	padding-left: 1.5rem;
+	margin: 20px -1.5rem;
 	border-bottom: 1px solid black; 
 }
 
@@ -58,6 +58,11 @@ h5 {
 	font-size: 0.8em;
 }
 
+#body {
+	min-height: 100%;
+   	position: relative;
+}
+
 article {
 	padding-bottom: 20px;
 }
@@ -67,8 +72,6 @@ p {
 }
 
 article p {
-	padding-left: 1rem;
-	padding-right: 1rem;
 	margin-bottom: 1.5rem;
 }
 
@@ -80,7 +83,7 @@ blockquote {
 	min-height: 2em;
     border-left: solid 6px #aaa;
     background: #e5e5e5;
-    padding: 10px 30px 10px 30px;
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
 }
 
 code {
@@ -92,10 +95,87 @@ hr {
 	margin-right: -25px;
 }
 
-.block-html table {
-	margin-bottom: 1.5rem;
-	margin-left: 20px;
-	margin-right: 20px;
+.section-heading {
+	color: white;
+    -webkit-transition: color 0.5s ease;
+   -moz-transition: color 0.5s ease;
+    -ms-transition: color 0.5s ease;
+     -o-transition: color 0.5s ease;
+        transition: color 0.5s ease;
+}
+
+.section-heading:hover {
+	color: rgb(255, 0, 175);
+}
+
+.info-header {
+	width: 100%;
+	height: 30px;
+	position: relative;
+	margin-bottom: 5px;
+}
+
+.info-header i {
+	vertical-align: middle;
+	height: 1.2em;
+}
+
+.date {
+	font-weight: bold;
+	position: absolute;
+	left: 16px;
+	bottom: 0;
+	padding-bottom: 3px
+}
+
+.content {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.container {
+	font-size: 18px;
+	line-height: 25px;
+	padding-bottom: 65px;
+	position: relative;
+}
+
+.row {
+	margin: 0;
+}
+
+.two-col-block {
+	padding: 0;
+}
+
+.section-block {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.rich-text h2, .rich-text h3, .rich-text h3 {
+	margin-left: -2.5rem;
+	margin-right: -2.5rem;
+}
+
+.section-block canvas,
+.section-block iframe,
+.section-block object {
+	display: block;
+}
+
+.section-block > *  {
+	margin: 3px auto 1.5rem auto;
+}
+
+@media (min-width: 768px) {
+	.left-block .section-block > * {
+		margin-left: 0;
+	}
+
+	.right-block .section-block > * {
+		margin-right: 0;
+	}
 }
 
 .block-html th, td {
@@ -110,68 +190,6 @@ hr {
 
 .block-html tr:nth-child(even) {
     background-color: #eee;
-}
-
-.two-col-block canvas,
-.two-col-block iframe,
-.two-col-block object,
-.two-col-block svg,
-.two-col-block ul,
-.two-col-block ol,
-.two-col-block img {
-	display: block;
-}
-
-.right-block canvas,
-.right-block iframe,
-.right-block object,
-.right-block svg,
-.right-block ul,
-.right-block ol,
-.right-block table,
-.right-block img {
-	margin: 0px 1rem 1.5rem auto;
-	margin: 0px 1rem 1.5rem auto;
-}
-
-.left-block canvas,
-.left-block iframe,
-.left-block object,
-.left-block svg,
-.left-block ul,
-.left-block ol,
-.left-block table,
-.left-block img {
-	margin: 0px auto 1.5rem 1rem;
-}
-
-.block-html object, svg {
-	margin-top: 2px;
-}
-
-@media(max-width: 768px) {
-	.two-col-block canvas,
-	.two-col-block iframe,
-	.two-col-block object,
-	.two-col-block table,
-	.two-col-block ul,
-	.two-col-block ol,
-	.two-col-block img {
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	.two-col-block svg {
-		margin-left: 1rem;
-		margin-right: 1rem;
-	}
-}
-
-.container {
-	font-size: 18px;
-	line-height: 25px;
-	padding-bottom: 65px;
-	position: relative;
 }
 
 .navbar {
@@ -203,55 +221,12 @@ hr {
 	background-color: #007bff;
 }
 
-#body {
-	min-height: 100%;
-   	position: relative;
-}
-
-.content {
-	max-width: 800px;
-	margin: 0 auto;
-}
-
 .footer {
 	width: 100%;
 	height: 40px;
 	background-color: #282828;
 	position: absolute;
 	bottom: 0;
-}
-
-.section-heading {
-	color: white;
-    -webkit-transition: color 0.5s ease;
-   -moz-transition: color 0.5s ease;
-    -ms-transition: color 0.5s ease;
-     -o-transition: color 0.5s ease;
-        transition: color 0.5s ease;
-}
-
-.section-heading:hover {
-	color: rgb(255, 0, 175);
-}
-
-.info-header {
-	width: 100%;
-	height: 30px;
-	position: relative;
-	margin-bottom: 5px;
-}
-
-.info-header i {
-	vertical-align: middle;
-	height: 1.2em;
-}
-
-.date {
-	font-weight: bold;
-	position: absolute;
-	left: 15px;
-	bottom: 0;
-	padding-bottom: 3px
 }
 
 .github-link {
@@ -272,7 +247,7 @@ hr {
 
 .rich-text ol, .rich-text ul {
 	line-height: 1.2em;
-	margin-left: 1rem;
+	margin-top: 0.5rem;
 	padding-right: 1rem;
 	padding-inline-start: 2rem;
 	border-top: 1px solid #aaa;
@@ -280,7 +255,7 @@ hr {
     display: inline-block;
 }
 
-p + ol, p + ul {
+.rich-text p + ol, .rich-text p + ul {
 	margin-top: -1rem;
 }
 
@@ -295,7 +270,7 @@ ol.linenums {
 }
 
 pre.prettyprint {
-	margin: 0 1rem 1.5rem 1rem;
+	margin: 0.5rem 1rem 1.5rem 1rem;
 	font-size: 0.8rem;
 	line-height: 0.9rem;
 	white-space: pre-wrap;
@@ -354,6 +329,11 @@ a:hover {
 	color: rgb(255, 0, 175);
 }
 
+.featured-page-row {
+	margin-left: -5px;
+	margin-right: -5px;
+}
+
 .featured-page-container {
 	padding: 0 5px;
 	margin-bottom: 16px;
@@ -367,12 +347,8 @@ a:hover {
 	position: relative;
 }
 
-.featured-page-block {
-	margin-bottom: 1.5rem;
-}
-
 .featured-page-image {
-	margin: 5px 15px 5px 10px;
+	margin: 5px 10px 5px 5px;
 	display: inline-block;
 }
 
