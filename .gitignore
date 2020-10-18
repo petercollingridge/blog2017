@@ -16,3 +16,4 @@ manage.py
 wsgi.py
 
 media/
+backups/*
